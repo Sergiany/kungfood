@@ -73,7 +73,7 @@ public interface InterfaceCrud<T> extends Serializable{
 	Long getTotalRegistros(String tabela) throws Exception;
 	
 	// Fazer montagem dinâmica de SQL/Query para consulta de dados
-	Query obterQuery(String query) throws Exception;
+	Query obterQuery(String query) throws Exception;	
 	
 	// Carregamento dinâmico co JSF e Primefaces
 	List<T> findListByQueryDinamica(String query, int inicialNoRegistro, int maximoResuldato) throws Exception;
