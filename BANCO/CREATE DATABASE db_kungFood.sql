@@ -37,6 +37,15 @@ CREATE TABLE db_kungfood.tb_pedido(
     qtd_pedido INT NOT NULL COMMENT 'QUANTIDADE DE PEDIDOS'
 );
 
+CREATE TABLE db_kungfood.tb_produto(
+	id_produto INT AUTO_INCREMENT PRIMARY KEY NOT NULL COMMENT 'CODIGO DO PRODUTO',
+    nm_produto VARCHAR(100) NOT NULL COMMENT 'NOME DO PRODUTO',
+    ds_produto	VARCHAR(255) NOT NULL COMMENT 'DESCRICAO DO PRODUTO',
+    vl_produto DOUBLE NOT NULL COMMENT 'VALOR DO PRODUTO',
+    qt_produto DOUBLE NOT NULL COMMENT 'QUANTIDADE DO PRODUTO',
+    validade_produto DATE NOT NULL COMMENT 'VALIDADE DO PRODUTO'
+);
+
 
 ALTER TABLE db_kungfood.tb_cliente ADD FOREIGN KEY (id_admin_cadastro) REFERENCES db_kungfood.tb_admin(id_admin);
 
