@@ -1,78 +1,75 @@
 package br.com.kungFood.model;
 
 import java.io.Serializable;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import br.com.kungFood.uteis.ConvertDateToString;
+
 public class ProdutoModel implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private Integer id;
-	private String nome;
-	private String descrição;
-	private double valor;
-	private double quantidade;
-	private String validade;
+	private Integer id_produto;
+	private String nm_produto;
+	private String ds_produto;
+	private double vl_produto;
+	private double qt_produto;
+	private String validade_produto;
 	
 	public ProdutoModel() {
 		
 	}
-	
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	public String getDescrição() {
-		return descrição;
-	}
-	public void setDescrição(String descrição) {
-		this.descrição = descrição;
-	}
-	public double getValor() {
-		return valor;
-	}
-	public void setValor(double valor) {
-		this.valor = valor;
-	}
-	public double getQuantidade() {
-		return quantidade;
-	}
-	public void setQuantidade(double quantidade) {
-		this.quantidade = quantidade;
-	}
-	public String getValidade() {
-		return validade;
-	}
-	public void setValidade(String validade) {
-		System.out.println(convertDate(validade));
-		this.validade = convertDate(validade);
-	}
-	
-	public String convertDate(String data) {
-		SimpleDateFormat formatoRecebido = new SimpleDateFormat("EEE MMM dd HH:mm:ss ZZZ yyyy", Locale.ENGLISH); 
-		SimpleDateFormat mascaraData=new SimpleDateFormat("yyyy-MM-dd");
-		Date novoFormato = null;
-		try {
-			novoFormato = formatoRecebido.parse(data);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		String dataFormatada = mascaraData.format(novoFormato);
-		return dataFormatada;
-	}
-	
 
+	public Integer getId_produto() {
+		return id_produto;
+	}
+
+	public void setId_produto(Integer id_produto) {
+		this.id_produto = id_produto;
+	}
+
+	public String getNm_produto() {
+		return nm_produto;
+	}
+
+	public void setNm_produto(String nm_produto) {
+		this.nm_produto = nm_produto;
+	}
+
+	public String getDs_produto() {
+		return ds_produto;
+	}
+
+	public void setDs_produto(String ds_produto) {
+		this.ds_produto = ds_produto;
+	}
+
+	public double getVl_produto() {
+		return vl_produto;
+	}
+
+	public void setVl_produto(double vl_produto) {
+		this.vl_produto = vl_produto;
+	}
+
+	public double getQt_produto() {
+		return qt_produto;
+	}
+
+	public void setQt_produto(double qt_produto) {
+		this.qt_produto = qt_produto;
+	}
+
+	public String getValidade_produto() {
+		return validade_produto;
+	}
+
+	public void setValidade_produto(String validade_produto) {
+		String data = new ConvertDateToString().convertDateInsert(validade_produto);
+		this.validade_produto = data;
+	}
+	
 }

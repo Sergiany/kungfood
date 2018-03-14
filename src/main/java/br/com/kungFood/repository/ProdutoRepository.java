@@ -24,12 +24,12 @@ public class ProdutoRepository {
 		entityManager = Uteis.JpaEntityManager();
 		
 		produtoEntity = new ProdutoEntity();
-		produtoEntity.setId_produto(produtoModel.getId());
-		produtoEntity.setNm_produto(produtoModel.getNome());
-		produtoEntity.setDs_produto(produtoModel.getDescrição());
-		produtoEntity.setVl_produto(produtoModel.getValor());
-		produtoEntity.setQt_produto(produtoModel.getQuantidade());
-		produtoEntity.setValidade_produto(produtoModel.getValidade());
+		produtoEntity.setId(produtoModel.getId_produto());
+		produtoEntity.setNome(produtoModel.getNm_produto());
+		produtoEntity.setDescricao(produtoModel.getDs_produto());
+		produtoEntity.setValor(produtoModel.getVl_produto());
+		produtoEntity.setQuantidade(produtoModel.getQt_produto());
+		produtoEntity.setValidade(produtoModel.getValidade_produto());
 		
 		entityManager.persist(produtoEntity);
 	}
@@ -50,12 +50,12 @@ public class ProdutoRepository {
 		for (ProdutoEntity produtoEntity : produtosEntity){
 			
 			produtoModel = new ProdutoModel();
-			produtoModel.setId(produtoEntity.getId_produto());
-			produtoModel.setNome(produtoEntity.getNm_produto());
-			produtoModel.setDescrição(produtoEntity.getDs_produto());
-			produtoModel.setValor(produtoEntity.getVl_produto());
-			produtoModel.setQuantidade(produtoEntity.getQt_produto());
-			produtoModel.setValidade(produtoEntity.getValidade_produto());
+			produtoModel.setId_produto(produtoEntity.getId());
+			produtoModel.setNm_produto(produtoEntity.getNome());
+			produtoModel.setDs_produto(produtoEntity.getDescricao());
+			produtoModel.setVl_produto(produtoEntity.getValor());
+			produtoModel.setQt_produto(produtoEntity.getQuantidade());
+			produtoModel.setValidade_produto(produtoEntity.getValidade());
 			
 			produtosModel.add(produtoModel);
 			
@@ -64,7 +64,7 @@ public class ProdutoRepository {
 	}
 	
 	/***
-	 * CONSULTA UM PRATO CADASTRADA PELO CODIGO
+	 * CONSULTA UM PRODUTO CADASTRADA PELO CODIGO
 	 * @param codigo
 	 * @return
 	 */
@@ -83,11 +83,15 @@ public class ProdutoRepository {
 	public void AlterarRegistro(ProdutoModel produtoModel){
 		entityManager = Uteis.JpaEntityManager();
 		
-		ProdutoEntity produtoEntity = this.GetProduto(produtoModel.getId());
+		ProdutoEntity produtoEntity = this.GetProduto(produtoModel.getId_produto());
 		
-		produtoEntity.setNm_produto(produtoModel.getNome());
-		produtoEntity.setDs_produto(produtoModel.getDescrição());
-		produtoEntity.setVl_produto(produtoModel.getValor());
+		produtoEntity.setNome(produtoModel.getNm_produto());
+		produtoEntity.setDescricao(produtoModel.getDs_produto());
+		produtoEntity.setValor(produtoModel.getVl_produto());
+		produtoEntity.setQuantidade(produtoModel.getQt_produto());
+		produtoEntity.setValidade(produtoModel.getValidade_produto());
+		
+		
 		
 		entityManager.merge(produtoEntity);
 		
