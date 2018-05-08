@@ -16,7 +16,7 @@
 
 			<p:outputLabel value="Nome" for="inputText-nome" />
 			<p:inputText id="inputText-nome" style="width:300px" maxlength="70"
-				value="#{cadastrarProdutoController.produtoModel.nm_produto}"
+				value="#{consultarProdutoController.produtoModel.nm_produto}"
 				required="true"
 				requiredMessage="O nome do produto é de preenchimento obrigatório" />
 
@@ -24,14 +24,14 @@
 			<p:outputLabel value="Descrição" for="inputText-descricao" />
 			<p:inputText id="inputText-descricao" style="width:300px"
 				maxlength="80"
-				value="#{cadastrarProdutoController.produtoModel.ds_produto}"
+				value="#{consultarProdutoController.produtoModel.ds_produto}"
 				required="true"
 				requiredMessage="A descrição do produto é de preenchimento obrigatório" />
 
 
 			<p:outputLabel value="Valor" for="inputText-valor" />
 			<p:inputText id="inputText-valor" style="width:150px" maxlength="15"
-				value="#{cadastrarProdutoController.produtoModel.vl_produto}"
+				value="#{consultarProdutoController.produtoModel.vl_produto}"
 				required="true" size="20"
 				requiredMessage="O valor do produto é de preenchimento obrigatório">
 				<!-- <f:convertNumber minFractionDigits="2" maxFractionDigits="3" locale="pt BR"/> -->
@@ -41,7 +41,7 @@
 			<p:outputLabel value="Quantidade" for="inputText-quantidade" />
 			<p:inputText id="inputText-quantidade" style="width:150px"
 				maxlength="15"
-				value="#{cadastrarProdutoController.produtoModel.qt_produto}"
+				value="#{consultarProdutoController.produtoModel.qt_produto}"
 				required="true" size="20"
 				requiredMessage="A quantidade do produto é de preenchimento obrigatório">
 				<!-- <f:convertNumber minFractionDigits="2" maxFractionDigits="3" locale="pt BR"/> -->
@@ -49,7 +49,7 @@
 
 			<p:outputLabel value="Validade" for="popup" />
 			<p:calendar id="popup" style="width:200px" maxlength="150"
-				value="#{cadastrarProdutoController.produtoModel.validade_produto}"
+				value="#{consultarProdutoController.produtoModel.validade_produto}"
 				mask="99/99/9999" required="true" locale="pt"
 				requiredMessage="A validade produto é de preenchimento obrigatório">
 			</p:calendar>
