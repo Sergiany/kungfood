@@ -3,7 +3,9 @@ package br.com.kungFood.pessoa.controller;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
- 
+
+import org.junit.Test;
+
 import br.com.kungFood.model.CardapioModel;
 import br.com.kungFood.repository.CardapioRepository;
 import br.com.kungFood.uteis.Uteis;
@@ -18,9 +20,11 @@ public class CadastrarCardapioController {
 	@Inject
 	CardapioRepository cardapioRepository;
 	
+	@Test
 	public CardapioModel getCardapioModel(){
 		return cardapioModel;
 	}
+	@Test
 	public void setCardapioModel(CardapioModel cardapioModel) {
 		this.cardapioModel = cardapioModel;
 	}
@@ -29,6 +33,7 @@ public class CadastrarCardapioController {
 	/**
 	 *SALVA UM NOVO REGISTRO VIA INPUT 
 	 */
+	@Test
 	public void SalvarNovoCardapio(){
 		
 		cardapioRepository.SalvarNovoProduto(this.cardapioModel);

@@ -11,7 +11,9 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
- 
+
+import org.junit.Test;
+
 import br.com.kungFood.model.UsuarioModel;
  
 @WebFilter("/sistema/*")
@@ -20,11 +22,13 @@ public class AutenticacaoFilter implements Filter {
     public AutenticacaoFilter() {
  
     }
- 
-	public void destroy() {
+    
+    @Test
+    public void destroy() {
  
 	}
  
+	@Test
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
  
 		HttpSession httpSession 				= ((HttpServletRequest) request).getSession(); 
@@ -52,7 +56,7 @@ public class AutenticacaoFilter implements Filter {
 			chain.doFilter(request, response);
 		}
 	}
- 
+	@Test
 	public void init(FilterConfig fConfig) throws ServletException {
  
 	}

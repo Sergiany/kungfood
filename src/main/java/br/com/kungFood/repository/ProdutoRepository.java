@@ -7,7 +7,9 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
- 
+
+import org.junit.Test;
+
 import br.com.kungFood.model.ProdutoModel;
 import br.com.kungFood.repository.entity.ProdutoEntity;
 import br.com.kungFood.uteis.Uteis;
@@ -19,6 +21,7 @@ public class ProdutoRepository {
 	
 	EntityManager entityManager;
 	
+	@Test
 	public void SalvarNovoProduto(ProdutoModel produtoModel){
 		
 		entityManager = Uteis.JpaEntityManager();
@@ -34,6 +37,7 @@ public class ProdutoRepository {
 		entityManager.persist(produtoEntity);
 	}
 	
+	@Test
 	public List<ProdutoModel> GetProduto(){
 		
 		List<ProdutoModel> produtosModel = new ArrayList<ProdutoModel>();
@@ -69,6 +73,7 @@ public class ProdutoRepository {
 	 * @return
 	 */
 
+	@Test
 	private ProdutoEntity GetProduto(int codigo){
 		
 		entityManager = Uteis.JpaEntityManager();
@@ -80,6 +85,7 @@ public class ProdutoRepository {
 	 * ALTERA UM REGISTRO CADASTRADO NO BANCO DE DADOS
 	 * @param produtoModel
 	 */
+	@Test
 	public void AlterarRegistro(ProdutoModel produtoModel){
 		entityManager = Uteis.JpaEntityManager();
 		
@@ -101,6 +107,7 @@ public class ProdutoRepository {
 	 * EXCLUI UM REGISTRO DO BANCO DE DADOS
 	 * @param codigo
 	 */
+	@Test
 	public void ExcluirRegistro(int codigo){
 		entityManager = Uteis.JpaEntityManager();
 		

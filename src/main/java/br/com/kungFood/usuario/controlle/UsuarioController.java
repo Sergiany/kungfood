@@ -8,7 +8,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
  
 import org.apache.commons.lang3.StringUtils;
- 
+import org.junit.Test;
+
 import br.com.kungFood.model.UsuarioModel;
 import br.com.kungFood.repository.UsuarioRepository;
 import br.com.kungFood.repository.entity.UsuarioEntity;
@@ -29,13 +30,15 @@ public class UsuarioController implements Serializable {
 	@Inject
 	private UsuarioEntity usuarioEntity;
  
+	@Test
 	public UsuarioModel getUsuarioModel() {
 		return usuarioModel;
 	}
+	@Test
 	public void setUsuarioModel(UsuarioModel usuarioModel) {
 		this.usuarioModel = usuarioModel;
 	}
- 
+	@Test
 	public UsuarioModel GetUsuarioSession(){
  
 		FacesContext facesContext = FacesContext.getCurrentInstance();
@@ -43,12 +46,14 @@ public class UsuarioController implements Serializable {
 		return (UsuarioModel)facesContext.getExternalContext().getSessionMap().get("usuarioAutenticado");
 	}
  
+	@Test
 	public String Logout(){
  
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
  
 		return "/index.xhtml?faces-redirect=true";
 	}
+	@Test
 	public String EfetuarLogin(){
  
 		if(StringUtils.isEmpty(usuarioModel.getUsuario()) || StringUtils.isBlank(usuarioModel.getUsuario())){

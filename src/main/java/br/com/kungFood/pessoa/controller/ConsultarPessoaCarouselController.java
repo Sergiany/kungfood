@@ -8,7 +8,9 @@ import javax.enterprise.inject.Produces;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
- 
+
+import org.junit.Test;
+
 import br.com.kungFood.model.PessoaModel;
 import br.com.kungFood.repository.PessoaRepository;
  
@@ -24,17 +26,16 @@ public class ConsultarPessoaCarouselController implements Serializable {
 	@Produces 
 	private List<PessoaModel> pessoas;
  
+	@Test
 	public List<PessoaModel> getPessoas() {
 		return pessoas;
 	}
  
 	@PostConstruct
+	@Test
 	private void init(){
  
 		this.pessoas = pessoaRepository.GetPessoas();
 	}
- 
- 
- 
  
 }

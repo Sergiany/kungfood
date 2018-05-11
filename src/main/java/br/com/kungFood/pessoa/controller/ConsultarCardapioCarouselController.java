@@ -9,6 +9,8 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.junit.Test;
+
 import br.com.kungFood.model.CardapioModel;
 import br.com.kungFood.repository.CardapioRepository;
 
@@ -24,11 +26,13 @@ public class ConsultarCardapioCarouselController implements Serializable{
 	@Produces
 	private List<CardapioModel> cardapios;
 	
+	@Test
 	public List<CardapioModel> getCardapios(){
 		return cardapios;
 	}
 	
 	@PostConstruct
+	@Test
 	private void init(){
 		
 		this.cardapios = cardapioRepository.GetCardapio();

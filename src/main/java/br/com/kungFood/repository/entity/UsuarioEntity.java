@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+
+import org.junit.Test;
  
 @Table(name="tb_admin")
 @Entity	
@@ -28,21 +30,27 @@ public class UsuarioEntity implements Serializable {
 	@Column(name="ds_senha_admin")
 	private String senha;
  
+	@Test
 	public String getCodigo() {
 		return codigo;
 	}
+	@Test
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
+	@Test
 	public String getUsuario() {
 		return usuario;
 	}
+	@Test
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
+	@Test
 	public String getSenha() {
 		return senha;
 	}
+	@Test
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}

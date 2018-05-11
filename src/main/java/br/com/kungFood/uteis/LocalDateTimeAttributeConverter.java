@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
  
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
+
+import org.junit.Test;
  
 @Converter(autoApply = true)
 public class LocalDateTimeAttributeConverter implements AttributeConverter<LocalDateTime, Timestamp> {
@@ -12,6 +14,7 @@ public class LocalDateTimeAttributeConverter implements AttributeConverter<Local
  
     //TRANSFORMA EM Timestamp NA HORA DE PERSISTIR NO BANCO DE DADOS
     @Override
+    @Test
     public Timestamp convertToDatabaseColumn(LocalDateTime localDateTime) {
  
     	if(localDateTime != null)
@@ -23,6 +26,7 @@ public class LocalDateTimeAttributeConverter implements AttributeConverter<Local
  
     //TRANSFORMA UM Timestamp EM LocalDateTime QUANDO RETORNAR DO BANCO PARA ENTIDADE
     @Override
+    @Test
     public LocalDateTime convertToEntityAttribute(Timestamp timestamp) {
  
     	if(timestamp != null)

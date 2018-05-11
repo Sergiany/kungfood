@@ -4,6 +4,8 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.junit.Test;
+
 import br.com.kungFood.model.ProdutoModel;
 import br.com.kungFood.repository.ProdutoRepository;
 import br.com.kungFood.usuario.controlle.UsuarioController;
@@ -22,10 +24,12 @@ public class CadastrarProdutoController {
 	@Inject
 	ProdutoRepository produtoRepository;
 
+	@Test
 	public ProdutoModel getProdutoModel() {
 		return produtoModel;
 	}
 
+	@Test
 	public void setProdutoModel(ProdutoModel produtoModel) {
 		this.produtoModel = produtoModel;
 	}
@@ -33,6 +37,7 @@ public class CadastrarProdutoController {
 	/**
 	 * SALVA UM NOVO REGISTRO VIA INPUT
 	 */
+	@Test
 	public void SalvarNovoProduto() {
 
 		produtoRepository.SalvarNovoProduto(this.produtoModel);

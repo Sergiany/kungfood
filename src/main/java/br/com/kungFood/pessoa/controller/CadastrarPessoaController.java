@@ -3,7 +3,9 @@ package br.com.kungFood.pessoa.controller;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
- 
+
+import org.junit.Test;
+
 import br.com.kungFood.model.PessoaModel;
 import br.com.kungFood.repository.PessoaRepository;
 import br.com.kungFood.usuario.controlle.UsuarioController;
@@ -23,10 +25,12 @@ public class CadastrarPessoaController {
 	PessoaRepository pessoaRepository;
  
  
+	@Test
 	public PessoaModel getPessoaModel() {
 		return pessoaModel;
 	}
  
+	@Test
 	public void setPessoaModel(PessoaModel pessoaModel) {
 		this.pessoaModel = pessoaModel;
 	}
@@ -34,6 +38,7 @@ public class CadastrarPessoaController {
 	/**
 	 *SALVA UM NOVO REGISTRO VIA INPUT 
 	 */
+	@Test
 	public void SalvarNovaPessoa(){
  
 		pessoaModel.setUsuarioModel(this.usuarioController.GetUsuarioSession());

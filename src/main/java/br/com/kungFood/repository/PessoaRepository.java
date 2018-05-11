@@ -8,7 +8,9 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
- 
+
+import org.junit.Test;
+
 import br.com.kungFood.model.PessoaModel;
 import br.com.kungFood.model.UsuarioModel;
 import br.com.kungFood.repository.entity.PessoaEntity;
@@ -26,6 +28,7 @@ public class PessoaRepository {
 	 * METODO RESPONSAVEL POR SALVAR UMA NOVA PESSOA
 	 * @param pessoaModel
 	 */
+	@Test
 	public void SalvarNovoRegistro(PessoaModel pessoaModel){
  
 		entityManager =  Uteis.JpaEntityManager();
@@ -50,6 +53,7 @@ public class PessoaRepository {
 	 * METODO PARA CONSULTAR A PESSOA
 	 * @return
 	 */
+	@Test
 	public List<PessoaModel> GetPessoas(){
  
 		List<PessoaModel> pessoasModel = new ArrayList<PessoaModel>();
@@ -101,6 +105,7 @@ public class PessoaRepository {
 	 * @param codigo
 	 * @return
 	 */
+	@Test
 	private PessoaEntity GetPessoa(int codigo){
  
 		entityManager =  Uteis.JpaEntityManager();
@@ -112,6 +117,7 @@ public class PessoaRepository {
 	 * ALTERA UM REGISTRO CADASTRADO NO BANCO DE DADOS
 	 * @param pessoaModel
 	 */
+	@Test
 	public void AlterarRegistro(PessoaModel pessoaModel){
  
 		entityManager =  Uteis.JpaEntityManager();
@@ -130,6 +136,7 @@ public class PessoaRepository {
 	 * EXCLUI UM REGISTRO DO BANCO DE DADOS
 	 * @param codigo
 	 */
+	@Test
 	public void ExcluirRegistro(int codigo){
  
 		entityManager =  Uteis.JpaEntityManager();		

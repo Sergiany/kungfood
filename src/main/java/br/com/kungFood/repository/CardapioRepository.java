@@ -7,7 +7,9 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
- 
+
+import org.junit.Test;
+
 import br.com.kungFood.model.CardapioModel;
 import br.com.kungFood.repository.entity.CardapioEntity;
 import br.com.kungFood.uteis.Uteis;
@@ -19,6 +21,7 @@ public class CardapioRepository {
 	
 	EntityManager entityManager;
 	
+	@Test
 	public void SalvarNovoProduto(CardapioModel cardapioModel){
 		
 		entityManager = Uteis.JpaEntityManager();
@@ -32,6 +35,7 @@ public class CardapioRepository {
 		entityManager.persist(cardapioEntity);
 	}
 	
+	@Test
 	public List<CardapioModel> GetCardapio(){
 		
 		List<CardapioModel> cardapiosModel = new ArrayList<CardapioModel>();
@@ -65,6 +69,7 @@ public class CardapioRepository {
 	 * @return
 	 */
 
+	@Test
 	private CardapioEntity GetCardapio(int codigo){
 		
 		entityManager = Uteis.JpaEntityManager();
@@ -76,6 +81,7 @@ public class CardapioRepository {
 	 * ALTERA UM REGISTRO CADASTRADO NO BANCO DE DADOS
 	 * @param cardapioModel
 	 */
+	@Test
 	public void AlterarRegistro(CardapioModel cardapioModel){
 		entityManager = Uteis.JpaEntityManager();
 		
@@ -93,6 +99,7 @@ public class CardapioRepository {
 	 * EXCLUI UM REGISTRO DO BANCO DE DADOS
 	 * @param codigo
 	 */
+	@Test
 	public void ExcluirRegistro(int codigo){
 		entityManager = Uteis.JpaEntityManager();
 		

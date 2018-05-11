@@ -12,6 +12,8 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
+
+import org.junit.Test;
  
 /***
  * ESSE FILTER VAI SER CHAMADO TODA VEZ QUE FOR REALIZADO 
@@ -28,12 +30,13 @@ public class JPAFilter implements Filter {
     public JPAFilter() {
  
     }
- 
+    @Test
 	public void destroy() {
  
 		this.entityManagerFactory.close();
 	}
  
+	@Test
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
  
 		/*CRIANDO UM ENTITYMANAGER*/
@@ -65,6 +68,7 @@ public class JPAFilter implements Filter {
 		}
 	}
  
+	@Test
 	public void init(FilterConfig fConfig) throws ServletException {
  
 		/*CRIA O entityManagerFactory COM OS PARAMETROS DEFINIDOS NO persistence.xml*/

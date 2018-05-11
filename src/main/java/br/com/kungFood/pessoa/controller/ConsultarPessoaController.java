@@ -8,7 +8,9 @@ import javax.enterprise.inject.Produces;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
- 
+
+import org.junit.Test;
+
 import br.com.kungFood.model.PessoaModel;
 import br.com.kungFood.repository.PessoaRepository;
  
@@ -27,15 +29,19 @@ public class ConsultarPessoaController implements Serializable {
 	@Inject transient
 	private PessoaRepository pessoaRepository;
  
+	@Test
 	public List<PessoaModel> getPessoas() {
 		return pessoas;
 	}
+	@Test
 	public void setPessoas(List<PessoaModel> pessoas) {
 		this.pessoas = pessoas;
-	}		
+	}	
+	@Test
 	public PessoaModel getPessoaModel() {
 		return pessoaModel;
 	}
+	@Test
 	public void setPessoaModel(PessoaModel pessoaModel) {
 		this.pessoaModel = pessoaModel;
 	}
@@ -44,6 +50,7 @@ public class ConsultarPessoaController implements Serializable {
 	 * CARREGA AS PESSOAS NA INICIALIZACAO 
 	 */
 	@PostConstruct
+	@Test
 	public void init(){
  
 		//RETORNAR AS PESSOAS CADASTRADAS
@@ -54,6 +61,7 @@ public class ConsultarPessoaController implements Serializable {
 	 * CARREGA INFORMACOES DE UMA PESSOA PARA SER EDITADA
 	 * @param pessoaModel
 	 */
+	@Test
 	public void Editar(PessoaModel pessoaModel){
  
 		/*PEGA APENAS A PRIMEIRA LETRA DO SEXO PARA SETAR NO CAMPO(M OU F)*/
@@ -66,6 +74,7 @@ public class ConsultarPessoaController implements Serializable {
 	/***
 	 * ATUALIZA O REGISTRO QUE FOI ALTERADO
 	 */
+	@Test
 	public void AlterarRegistro(){
  
 		this.pessoaRepository.AlterarRegistro(this.pessoaModel);	
@@ -79,6 +88,7 @@ public class ConsultarPessoaController implements Serializable {
 	 * EXCLUINDO UM REGISTRO
 	 * @param pessoaModel
 	 */
+	@Test
 	public void ExcluirPessoa(PessoaModel pessoaModel){
  
 		//EXCLUI A PESSOA DO BANCO DE DADOS
