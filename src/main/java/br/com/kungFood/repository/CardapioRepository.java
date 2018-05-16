@@ -7,7 +7,9 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
- 
+
+import org.junit.Test;
+
 import br.com.kungFood.model.CardapioModel;
 import br.com.kungFood.repository.entity.CardapioEntity;
 import br.com.kungFood.uteis.Uteis;

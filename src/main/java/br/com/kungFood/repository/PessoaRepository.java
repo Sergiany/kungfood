@@ -8,7 +8,9 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
- 
+
+import org.junit.Test;
+
 import br.com.kungFood.model.PessoaModel;
 import br.com.kungFood.model.UsuarioModel;
 import br.com.kungFood.repository.entity.PessoaEntity;
@@ -45,6 +47,10 @@ public class PessoaRepository {
 		entityManager.persist(pessoaEntity);
  
 	}
+	
+    public PessoaEntity findPessoa(Integer id) {
+        return entityManager.find(PessoaEntity.class, id);
+    }
  
 	/***
 	 * METODO PARA CONSULTAR A PESSOA
