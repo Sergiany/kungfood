@@ -3,7 +3,9 @@ package br.com.kungFood.pessoa.controller;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
- 
+
+import org.junit.Test;
+
 import br.com.kungFood.model.CardapioModel;
 import br.com.kungFood.repository.CardapioRepository;
 import br.com.kungFood.uteis.Uteis;
@@ -17,7 +19,6 @@ public class CadastrarCardapioController {
 	
 	@Inject
 	CardapioRepository cardapioRepository;
-	
 	public CardapioModel getCardapioModel(){
 		return cardapioModel;
 	}
