@@ -27,7 +27,7 @@
 		<h:form style="margin:auto;margin-left:2%;" id="form-consulta">
 
 			<p:dataTable id="dataTable-registros" var="pessoa"
-				value="#{consultarPessoaController.pessoas}" rows="15"
+				value="#{PessoaController.pessoas}" rows="15"
 				paginator="true"
 				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} 
                                                  {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -71,7 +71,7 @@
 
 					<p:commandButton icon="ui-icon-pencil" title="Editar Registro"
 						ajax="true"
-						actionListener="#{consultarPessoaController.Editar(pessoa)}"
+						actionListener="#{PessoaController.editar(pessoa)}"
 						oncomplete="PF('dialog-modal-editar').show();"
 						update="dialog-modal-editar" />
 
@@ -81,7 +81,7 @@
 
 					<p:commandButton icon="ui-icon-trash" title="Excluir Registro"
 						ajax="true"
-						actionListener="#{consultarPessoaController.ExcluirPessoa(pessoa)}"
+						actionListener="#{PessoaController.excluirPessoa(pessoa)}"
 						update="@form" />
 
 				</p:column>

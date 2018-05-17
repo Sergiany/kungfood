@@ -46,7 +46,4 @@ public class CardapioModel implements Serializable{
 		this.vl_prato = vl_prato;
 	}
 	
-	
-	
-
 }

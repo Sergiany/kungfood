@@ -1,4 +1,4 @@
-package br.com.kungFood.repository.entity;
+package br.com.kungFood.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

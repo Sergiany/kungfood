@@ -26,7 +26,7 @@
 		<h:form style="margin:auto;margin-left:2%;" id="form-consulta">
 
 			<p:dataTable id="dataTable-registros" var="cardapio"
-				value="#{consultarCardapioController.cardapios}" rows="15"
+				value="#{CardapioController.cardapios}" rows="15"
 				paginator="true"
 				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} 
                                                  {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -54,7 +54,7 @@
 
 					<p:commandButton icon="ui-icon-pencil" title="Editar Prato"
 						ajax="true"
-						actionListener="#{consultarCardapioController.Editar(cardapio)}"
+						actionListener="#{CardapioController.editar(cardapio)}"
 						oncomplete="PF('dialog-modal-editar').show();"
 						update="dialog-modal-editar" />
 
@@ -64,7 +64,7 @@
 
 					<p:commandButton icon="ui-icon-trash" title="Excluir Prato"
 						ajax="true"
-						actionListener="#{consultarCardapioController.ExcluirCardapio(cardapio)}"
+						actionListener="#{CardapioController.excluirCardapio(cardapio)}"
 						update="@form" />
 
 				</p:column>

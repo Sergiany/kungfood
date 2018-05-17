@@ -13,9 +13,9 @@ import org.junit.Test;
 
 import br.com.kungFood.model.PessoaModel;
 import br.com.kungFood.model.UsuarioModel;
-import br.com.kungFood.repository.entity.PessoaEntity;
-import br.com.kungFood.repository.entity.UsuarioEntity;
 import br.com.kungFood.uteis.Uteis;
+import br.com.kungFood.entity.PessoaEntity;
+import br.com.kungFood.entity.UsuarioEntity;
  
 public class PessoaRepository {
  
@@ -29,7 +29,7 @@ public class PessoaRepository {
 	 * @param pessoaModel
 	 */
 	@Test
-	public void SalvarNovoRegistro(PessoaModel pessoaModel){
+	public void salvarNovoRegistro(PessoaModel pessoaModel){
  
 		entityManager =  Uteis.JpaEntityManager();
  
@@ -54,7 +54,7 @@ public class PessoaRepository {
 	 * @return
 	 */
 	@Test
-	public List<PessoaModel> GetPessoas(){
+	public List<PessoaModel> getPessoas(){
  
 		List<PessoaModel> pessoasModel = new ArrayList<PessoaModel>();
  
@@ -106,7 +106,7 @@ public class PessoaRepository {
 	 * @return
 	 */
 	@Test
-	private PessoaEntity GetPessoa(int codigo){
+	private PessoaEntity getPessoa(int codigo){
  
 		entityManager =  Uteis.JpaEntityManager();
  
@@ -118,11 +118,11 @@ public class PessoaRepository {
 	 * @param pessoaModel
 	 */
 	@Test
-	public void AlterarRegistro(PessoaModel pessoaModel){
+	public void alterarRegistro(PessoaModel pessoaModel){
  
 		entityManager =  Uteis.JpaEntityManager();
  
-		PessoaEntity pessoaEntity = this.GetPessoa(pessoaModel.getCodigo());
+		PessoaEntity pessoaEntity = this.getPessoa(pessoaModel.getCodigo());
  
 		pessoaEntity.setEmail(pessoaModel.getEmail());
 		pessoaEntity.setEndereco(pessoaModel.getEndereco());
@@ -137,11 +137,11 @@ public class PessoaRepository {
 	 * @param codigo
 	 */
 	@Test
-	public void ExcluirRegistro(int codigo){
+	public void excluirRegistro(int codigo){
  
 		entityManager =  Uteis.JpaEntityManager();		
  
-		PessoaEntity pessoaEntity = this.GetPessoa(codigo);
+		PessoaEntity pessoaEntity = this.getPessoa(codigo);
  
 		entityManager.remove(pessoaEntity);
 	}

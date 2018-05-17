@@ -11,12 +11,10 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import org.junit.Test;
  
  
 @Entity
-@Table(name="tb_cliente")
+@Table(name="tb_pessoa")
  
 @NamedQueries({
  
@@ -27,93 +25,76 @@ public class PessoaEntity {
  
 	@Id
 	@GeneratedValue
-	@Column(name = "id_cliente")
+	@Column(name = "id_pessoa")
 	private Integer 		codigo;
  
-	@Column(name = "nm_cliente")
+	@Column(name = "nm_pessoa")
 	private String  		nome;
  
-	@Column(name = "fl_sexo_cliente")
+	@Column(name = "fl_sexo")
 	private String  		sexo;
  
-	@Column(name = "dt_cadastro_cliente")
+	@Column(name = "dt_cadastro")
 	private LocalDateTime	dataCadastro;
  
-	@Column(name = "ds_email_cliente")
+	@Column(name = "ds_email")
 	private String  		email;
  
-	@Column(name = "ds_endereco_cliente")
+	@Column(name = "ds_endereco")
 	private String  		endereco;
  
-	@Column(name = "fl_origemCadastro_cliente")
+	@Column(name = "fl_origemCadastro")
 	private String  		origemCadastro;
  
 	@OneToOne
-	@JoinColumn(name="id_admin_cadastro")
+	@JoinColumn(name="id_usuario_cadastro")
 	private UsuarioEntity	usuarioEntity;
  
-	@Test
 	public Integer getCodigo() {
 		return codigo;
 	}
-	@Test
 	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
 	}
-	@Test
 	public String getNome() {
 		return nome;
 	}
-	@Test
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	@Test
 	public String getSexo() {
 		return sexo;
 	}
-	@Test
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
-	
-	@Test
 	public LocalDateTime getDataCadastro() {
 		return dataCadastro;
 	}
-	@Test
 	public void setDataCadastro(LocalDateTime dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
-	@Test
 	public String getEmail() {
 		return email;
 	}
-	@Test
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	@Test
 	public String getEndereco() {
 		return endereco;
 	}
-	@Test
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-	@Test
 	public String getOrigemCadastro() {
 		return origemCadastro;
 	}
-	@Test
 	public void setOrigemCadastro(String origemCadastro) {
 		this.origemCadastro = origemCadastro;
 	}
-	@Test
 	public UsuarioEntity getUsuarioEntity() {
 		return usuarioEntity;
 	}
-	@Test
 	public void setUsuarioEntity(UsuarioEntity usuarioEntity) {
 		this.usuarioEntity = usuarioEntity;
 	}

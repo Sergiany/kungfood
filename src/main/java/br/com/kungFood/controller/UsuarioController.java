@@ -1,4 +1,4 @@
-package br.com.kungFood.usuario.controlle;
+package br.com.kungFood.controller;
 
 import java.io.Serializable;
 
@@ -10,9 +10,9 @@ import javax.inject.Named;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
+import br.com.kungFood.entity.UsuarioEntity;
 import br.com.kungFood.model.UsuarioModel;
 import br.com.kungFood.repository.UsuarioRepository;
-import br.com.kungFood.repository.entity.UsuarioEntity;
 import br.com.kungFood.uteis.Uteis;
  
 @Named(value="usuarioController")
@@ -39,7 +39,7 @@ public class UsuarioController implements Serializable {
 		this.usuarioModel = usuarioModel;
 	}
 	@Test
-	public UsuarioModel GetUsuarioSession(){
+	public UsuarioModel getUsuarioSession(){
  
 		FacesContext facesContext = FacesContext.getCurrentInstance();
  
@@ -47,14 +47,14 @@ public class UsuarioController implements Serializable {
 	}
  
 	@Test
-	public String Logout(){
+	public String logout(){
  
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
  
 		return "/index.xhtml?faces-redirect=true";
 	}
 	@Test
-	public String EfetuarLogin(){
+	public String efetuarLogin(){
  
 		if(StringUtils.isEmpty(usuarioModel.getUsuario()) || StringUtils.isBlank(usuarioModel.getUsuario())){
  
@@ -68,7 +68,7 @@ public class UsuarioController implements Serializable {
 		}
 		else{	
  
-			usuarioEntity = usuarioRepository.ValidaUsuario(usuarioModel);
+			usuarioEntity = usuarioRepository.validaUsuario(usuarioModel);
  
 			if(usuarioEntity!= null){
  

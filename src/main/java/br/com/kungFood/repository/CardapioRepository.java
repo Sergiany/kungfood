@@ -11,8 +11,8 @@ import javax.persistence.Query;
 import org.junit.Test;
 
 import br.com.kungFood.model.CardapioModel;
-import br.com.kungFood.repository.entity.CardapioEntity;
 import br.com.kungFood.uteis.Uteis;
+import br.com.kungFood.entity.CardapioEntity;
 
 public class CardapioRepository {
 	
@@ -22,7 +22,7 @@ public class CardapioRepository {
 	EntityManager entityManager;
 	
 	@Test
-	public void SalvarNovoProduto(CardapioModel cardapioModel){
+	public void salvarNovoProduto(CardapioModel cardapioModel){
 		
 		entityManager = Uteis.JpaEntityManager();
 		
@@ -36,7 +36,7 @@ public class CardapioRepository {
 	}
 	
 	@Test
-	public List<CardapioModel> GetCardapio(){
+	public List<CardapioModel> getCardapio(){
 		
 		List<CardapioModel> cardapiosModel = new ArrayList<CardapioModel>();
 		
@@ -70,7 +70,7 @@ public class CardapioRepository {
 	 */
 
 	@Test
-	private CardapioEntity GetCardapio(int codigo){
+	private CardapioEntity getCardapio(int codigo){
 		
 		entityManager = Uteis.JpaEntityManager();
 		
@@ -82,10 +82,10 @@ public class CardapioRepository {
 	 * @param cardapioModel
 	 */
 	@Test
-	public void AlterarRegistro(CardapioModel cardapioModel){
+	public void alterarRegistro(CardapioModel cardapioModel){
 		entityManager = Uteis.JpaEntityManager();
 		
-		CardapioEntity cardapioEntity = this.GetCardapio(cardapioModel.getId_prato());
+		CardapioEntity cardapioEntity = this.getCardapio(cardapioModel.getId_prato());
 		
 		cardapioEntity.setNm_prato(cardapioModel.getNm_prato());
 		cardapioEntity.setDs_prato(cardapioModel.getDs_prato());
@@ -100,10 +100,10 @@ public class CardapioRepository {
 	 * @param codigo
 	 */
 	@Test
-	public void ExcluirRegistro(int codigo){
+	public void excluirRegistro(int codigo){
 		entityManager = Uteis.JpaEntityManager();
 		
-		CardapioEntity cardapioEntity = this.GetCardapio(codigo);
+		CardapioEntity cardapioEntity = this.getCardapio(codigo);
 		
 		entityManager.remove(cardapioEntity);
 	}

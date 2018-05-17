@@ -26,13 +26,13 @@
 						<p:outputLabel value="Nome" for="inputText-nome" />
 						<p:inputText id="inputText-nome" style="width:300px"
 							maxlength="70"
-							value="#{cadastrarPessoaController.pessoaModel.nome}"
+							value="#{PessoaController.pessoaModel.nome}"
 							required="true"
 							requiredMessage="O nome é de preenchimento obrigatório" />
 
 						<p:outputLabel for="selectOneRadio-sexo" value="Sexo:" />
 						<p:selectOneRadio id="selectOneRadio-sexo"
-							value="#{cadastrarPessoaController.pessoaModel.sexo}"
+							value="#{PessoaController.pessoaModel.sexo}"
 							required="true"
 							requiredMessage="O sexo é de preenchimento obrigatório">
 
@@ -43,7 +43,7 @@
 						<p:outputLabel value="E-mail" for="inputText-email" />
 						<p:inputText id="inputText-email" style="width:300px"
 							maxlength="80"
-							value="#{cadastrarPessoaController.pessoaModel.email}"
+							value="#{PessoaController.pessoaModel.email}"
 							required="true"
 							requiredMessage="O email é de preenchimento obrigatório" />
 
@@ -51,7 +51,7 @@
 						<p:outputLabel value="Endereço" for="inputText-endereco" />
 						<p:inputText id="inputText-endereco" style="width:400px"
 							maxlength="200"
-							value="#{cadastrarPessoaController.pessoaModel.endereco}"
+							value="#{PessoaController.pessoaModel.endereco}"
 							required="true"
 							requiredMessage="O endereço é de preenchimento obrigatório" />
 
@@ -59,7 +59,7 @@
 
 						<p:commandButton value="Salvar" id="commandButton-salvar"
 							icon="ui-icon-gear"
-							actionListener="#{cadastrarPessoaController.SalvarNovaPessoa}"
+							actionListener="#{PessoaController.salvarNovaPessoa}"
 							update="panelGrid-campos-form" />
 
 

@@ -10,13 +10,13 @@
 
 			<p:outputLabel value="Código" for="inputText-codigo" />
 			<p:inputText id="inputText-codigo"
-				value="#{consultarCardapioController.cardapioModel.id_prato}"
+				value="#{CardapioController.cardapioModel.id_prato}"
 				style="width:50px" readonly="true" />
 
 
 			<p:outputLabel value="Nome" for="inputText-nome" />
 			<p:inputText id="inputText-nome" style="width:300px" maxlength="70"
-				value="#{consultarCardapioController.cardapioModel.nm_prato}"
+				value="#{CardapioController.cardapioModel.nm_prato}"
 				required="true"
 				requiredMessage="O nome do prato é de preenchimento obrigatório" />
 
@@ -24,21 +24,21 @@
 			<p:outputLabel value="Descrição" for="inputText-descricao" />
 			<p:inputText id="inputText-descricao" style="width:300px"
 				maxlength="80"
-				value="#{consultarCardapioController.cardapioModel.ds_prato}"
+				value="#{CardapioController.cardapioModel.ds_prato}"
 				required="true"
 				requiredMessage="A descrição do prato é de preenchimento obrigatório" />
 
 
 			<p:outputLabel value="Valor" for="inputText-valor" />
 			<p:inputText id="inputText-valor" style="width:400px" maxlength="200"
-				value="#{consultarCardapioController.cardapioModel.vl_prato}"
+				value="#{CardapioController.cardapioModel.vl_prato}"
 				required="true"
 				requiredMessage="O valor do prato é de preenchimento obrigatório" />
 
 			<p:spacer />
 			<p:commandButton value="Alterar" id="commandButton-alterar"
 				icon="ui-icon-gear"
-				actionListener="#{consultarCardapioController.AlterarRegistro}"
+				actionListener="#{CardapioController.alterarRegistro}"
 				oncomplete="PF('dialog-modal-editar').hide();"
 				update="form-consulta" />
 

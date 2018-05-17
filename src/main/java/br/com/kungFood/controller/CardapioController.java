@@ -1,4 +1,4 @@
-package br.com.kungFood.pessoa.controller;
+package br.com.kungFood.controller;
 
 import java.io.Serializable;
 import java.util.List;
@@ -13,10 +13,11 @@ import org.junit.Test;
 
 import br.com.kungFood.model.CardapioModel;
 import br.com.kungFood.repository.CardapioRepository;
+import br.com.kungFood.uteis.Uteis;
 
-@Named(value="consultarCardapioController")
+@Named(value="CardapioController")
 @ViewScoped
-public class ConsultarCardapioController implements Serializable{
+public class CardapioController implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -57,7 +58,7 @@ public class ConsultarCardapioController implements Serializable{
 	public void init(){
 		
 		//Retorna os pratos cadastrados
-		this.cardapios = cardapioRepository.GetCardapio();
+		this.cardapios = cardapioRepository.getCardapio();
 	}
 	
 	/***
@@ -65,7 +66,7 @@ public class ConsultarCardapioController implements Serializable{
 	 * @param  cardapioModel
 	 */
 	@Test
-	public void Editar(CardapioModel cardapioModel){
+	public void editar(CardapioModel cardapioModel){
 		
 		this.cardapioModel = cardapioModel;
 	}
@@ -74,9 +75,9 @@ public class ConsultarCardapioController implements Serializable{
 	 * ATUALIZA O REGISTRO QUE FOI ALTERADO
 	 */
 	@Test
-	public void AlterarRegistro(){
+	public void alterarRegistro(){
 		
-		this.cardapioRepository.AlterarRegistro(this.cardapioModel);
+		this.cardapioRepository.alterarRegistro(this.cardapioModel);
 		
 		//recarrega registros
 		this.init();
@@ -87,11 +88,21 @@ public class ConsultarCardapioController implements Serializable{
 	 * @param cardapioModel
 	 */
 	@Test
-	public void ExcluirCardapio(CardapioModel cardapioModel){
+	public void excluirCardapio(CardapioModel cardapioModel){
 		
 		//exclui o prato do banco de dados
-		this.cardapioRepository.ExcluirRegistro(cardapioModel.getId_prato());
+		this.cardapioRepository.excluirRegistro(cardapioModel.getId_prato());
 		
 		this.cardapios.remove(cardapioModel);
+	}
+	
+	@Test
+	public void salvarNovoCardapio(){
+		
+		cardapioRepository.salvarNovoProduto(this.cardapioModel);
+		
+		this.cardapioModel = null;
+		
+		Uteis.MensagemInfo("Prato cadastrado com sucesso");
 	}
 }

@@ -11,8 +11,8 @@ import javax.persistence.Query;
 import org.junit.Test;
 
 import br.com.kungFood.model.ProdutoModel;
-import br.com.kungFood.repository.entity.ProdutoEntity;
 import br.com.kungFood.uteis.Uteis;
+import br.com.kungFood.entity.ProdutoEntity;
 
 public class ProdutoRepository {
 	
@@ -22,7 +22,7 @@ public class ProdutoRepository {
 	EntityManager entityManager;
 	
 	@Test
-	public void SalvarNovoProduto(ProdutoModel produtoModel){
+	public void salvarNovoProduto(ProdutoModel produtoModel){
 		
 		entityManager = Uteis.JpaEntityManager();
 		
@@ -38,7 +38,7 @@ public class ProdutoRepository {
 	}
 	
 	@Test
-	public List<ProdutoModel> GetProduto(){
+	public List<ProdutoModel> getProduto(){
 		
 		List<ProdutoModel> produtosModel = new ArrayList<ProdutoModel>();
 		
@@ -74,7 +74,7 @@ public class ProdutoRepository {
 	 */
 
 	@Test
-	private ProdutoEntity GetProduto(int codigo){
+	private ProdutoEntity getProduto(int codigo){
 		
 		entityManager = Uteis.JpaEntityManager();
 		
@@ -86,10 +86,10 @@ public class ProdutoRepository {
 	 * @param produtoModel
 	 */
 	@Test
-	public void AlterarRegistro(ProdutoModel produtoModel){
+	public void alterarRegistro(ProdutoModel produtoModel){
 		entityManager = Uteis.JpaEntityManager();
 		
-		ProdutoEntity produtoEntity = this.GetProduto(produtoModel.getId_produto());
+		ProdutoEntity produtoEntity = this.getProduto(produtoModel.getId_produto());
 		
 		produtoEntity.setNome(produtoModel.getNm_produto());
 		produtoEntity.setDescricao(produtoModel.getDs_produto());
@@ -108,10 +108,10 @@ public class ProdutoRepository {
 	 * @param codigo
 	 */
 	@Test
-	public void ExcluirRegistro(int codigo){
+	public void excluirRegistro(int codigo){
 		entityManager = Uteis.JpaEntityManager();
 		
-		ProdutoEntity produtoEntity = this.GetProduto(codigo);
+		ProdutoEntity produtoEntity = this.getProduto(codigo);
 		
 		entityManager.remove(produtoEntity);
 	}

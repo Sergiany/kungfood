@@ -1,8 +1,8 @@
-package br.com.kungFood.pessoa.controller;
+package br.com.kungFood.controller;
 
 import java.io.Serializable;
 import java.util.List;
- 
+
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Produces;
 import javax.faces.view.ViewScoped;
@@ -13,6 +13,7 @@ import org.junit.Test;
 
 import br.com.kungFood.model.CardapioModel;
 import br.com.kungFood.repository.CardapioRepository;
+
 
 @Named(value="consultarCardapioCarouselController")
 @ViewScoped
@@ -26,6 +27,7 @@ public class ConsultarCardapioCarouselController implements Serializable{
 	@Produces
 	private List<CardapioModel> cardapios;
 	
+	
 	@Test
 	public List<CardapioModel> getCardapios(){
 		return cardapios;
@@ -35,7 +37,7 @@ public class ConsultarCardapioCarouselController implements Serializable{
 	@Test
 	private void init(){
 		
-		this.cardapios = cardapioRepository.GetCardapio();
+		this.cardapios = cardapioRepository.getCardapio();
 	}
 	
 }

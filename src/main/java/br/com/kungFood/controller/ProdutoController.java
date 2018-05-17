@@ -1,4 +1,4 @@
-package br.com.kungFood.pessoa.controller;
+package br.com.kungFood.controller;
 
 import java.io.Serializable;
 import java.util.List;
@@ -13,10 +13,11 @@ import org.junit.Test;
 
 import br.com.kungFood.model.ProdutoModel;
 import br.com.kungFood.repository.ProdutoRepository;
+import br.com.kungFood.uteis.Uteis;
 
-@Named(value="consultarProdutoController")
+@Named(value="ProdutoController")
 @ViewScoped
-public class ConsultarProdutoController implements Serializable{
+public class ProdutoController implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -58,7 +59,7 @@ public class ConsultarProdutoController implements Serializable{
 	public void init(){
 		
 		//Retorna os produtos cadastrados
-		this.produtos = produtoRepository.GetProduto();
+		this.produtos = produtoRepository.getProduto();
 	}
 	
 	/***
@@ -66,7 +67,7 @@ public class ConsultarProdutoController implements Serializable{
 	 * @param  produtoModel
 	 */
 	@Test
-	public void Editar(ProdutoModel produtoModel){
+	public void editar(ProdutoModel produtoModel){
 		
 		this.produtoModel = produtoModel;
 	}
@@ -75,9 +76,9 @@ public class ConsultarProdutoController implements Serializable{
 	 * ATUALIZA O REGISTRO QUE FOI ALTERADO
 	 */
 	@Test
-	public void AlterarRegistro(){
+	public void alterarRegistro(){
 		
-		this.produtoRepository.AlterarRegistro(this.produtoModel);
+		this.produtoRepository.alterarRegistro(this.produtoModel);
 		
 		//recarrega registros
 		this.init();
@@ -88,11 +89,25 @@ public class ConsultarProdutoController implements Serializable{
 	 * @param produtoModel
 	 */
 	@Test
-	public void ExcluirProduto(ProdutoModel produtoModel){
+	public void excluirProduto(ProdutoModel produtoModel){
 		
 		//exclui o produto do banco de dados
-		this.produtoRepository.ExcluirRegistro(produtoModel.getId_produto());
+		this.produtoRepository.excluirRegistro(produtoModel.getId_produto());
 		
 		this.produtos.remove(produtoModel);
+	}
+	
+	/**
+	 * SALVA UM NOVO REGISTRO VIA INPUT
+	 */
+	@Test
+	public void salvarNovoProduto() {
+
+		produtoRepository.salvarNovoProduto(this.produtoModel);
+
+		this.produtoModel = null;
+
+		Uteis.MensagemInfo("Produto cadastrado com sucesso");
+
 	}
 }
