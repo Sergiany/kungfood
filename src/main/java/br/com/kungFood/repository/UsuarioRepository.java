@@ -4,8 +4,6 @@ import java.io.Serializable;
 
 import javax.persistence.Query;
 
-import org.junit.Test;
-
 import br.com.kungFood.model.UsuarioModel;
 import br.com.kungFood.uteis.Uteis;
 import br.com.kungFood.entity.UsuarioEntity;
@@ -16,7 +14,7 @@ public class UsuarioRepository implements Serializable {
  
 	private static final long serialVersionUID = 1L;
  
-	@Test
+	
 	public UsuarioEntity validaUsuario(UsuarioModel usuarioModel){
  
 		try {

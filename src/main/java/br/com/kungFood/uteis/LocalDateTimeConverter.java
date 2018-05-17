@@ -11,7 +11,6 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.DateTimeConverter;
 import javax.faces.convert.FacesConverter;
 
-import org.junit.Test;
  
 @FacesConverter(value= LocalDateTimeConverter.ID)
 public class LocalDateTimeConverter extends DateTimeConverter {
@@ -19,7 +18,7 @@ public class LocalDateTimeConverter extends DateTimeConverter {
 	public static final String ID="br.com.kungFood.uteis.LocalDateTimeConverter"; 
  
 	@Override
-	@Test
+	
 	public Object getAsObject(FacesContext facesContext, UIComponent uiComponent, String value) {
  
 		Date date = null;
@@ -45,7 +44,7 @@ public class LocalDateTimeConverter extends DateTimeConverter {
 	}
  
 	  @Override
-	  @Test
+	  
 	  public String getAsString(FacesContext facesContext, UIComponent uiComponent, Object value) {
  
 		  if(value == null)

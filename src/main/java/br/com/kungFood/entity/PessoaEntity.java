@@ -12,7 +12,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.junit.Test;
  
  
 @Entity
@@ -52,68 +51,65 @@ public class PessoaEntity {
 	@JoinColumn(name="id_admin_cadastro")
 	private UsuarioEntity	usuarioEntity;
  
-	@Test
+	
 	public Integer getCodigo() {
 		return codigo;
 	}
-	@Test
+
 	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
 	}
-	@Test
+
 	public String getNome() {
 		return nome;
 	}
-	@Test
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	@Test
 	public String getSexo() {
 		return sexo;
 	}
-	@Test
+	
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
-	
-	@Test
-	public LocalDateTime getDataCadastro() {
+		public LocalDateTime getDataCadastro() {
 		return dataCadastro;
 	}
-	@Test
+	
 	public void setDataCadastro(LocalDateTime dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
-	@Test
+	
 	public String getEmail() {
 		return email;
 	}
-	@Test
+	
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	@Test
+	
 	public String getEndereco() {
 		return endereco;
 	}
-	@Test
+	
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-	@Test
+	
 	public String getOrigemCadastro() {
 		return origemCadastro;
 	}
-	@Test
+	
 	public void setOrigemCadastro(String origemCadastro) {
 		this.origemCadastro = origemCadastro;
 	}
-	@Test
+	
 	public UsuarioEntity getUsuarioEntity() {
 		return usuarioEntity;
 	}
-	@Test
+	
 	public void setUsuarioEntity(UsuarioEntity usuarioEntity) {
 		this.usuarioEntity = usuarioEntity;
 	}

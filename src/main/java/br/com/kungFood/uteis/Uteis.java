@@ -6,11 +6,9 @@ import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 
-import org.junit.Test;
  
 public class Uteis {
- 
-	@Test
+ 	
 	public static EntityManager JpaEntityManager(){
  
 		FacesContext facesContext = FacesContext.getCurrentInstance();
@@ -23,7 +21,7 @@ public class Uteis {
 	}
  
 	//MOSTRAR MENSAGEM
-	@Test
+	
 	public static void Mensagem(String mensagem){
  
 		FacesContext facesContext = FacesContext.getCurrentInstance();
@@ -32,7 +30,7 @@ public class Uteis {
 	}
  
 	//MOSTRAR MENSAGEM
-	@Test
+	
 	public static void MensagemAtencao(String mensagem){
  
 		FacesContext facesContext = FacesContext.getCurrentInstance();
@@ -41,7 +39,7 @@ public class Uteis {
 	}
  
 	//MOSTRAR MENSAGEM
-	@Test
+	
 	public static void MensagemInfo(String mensagem){
  
 		FacesContext facesContext = FacesContext.getCurrentInstance();

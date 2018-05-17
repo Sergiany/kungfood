@@ -9,8 +9,6 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.junit.Test;
-
 import br.com.kungFood.model.ProdutoModel;
 import br.com.kungFood.repository.ProdutoRepository;
 import br.com.kungFood.uteis.Uteis;
@@ -30,22 +28,20 @@ public class ProdutoController implements Serializable{
 	@Inject transient
 	private ProdutoRepository produtoRepository;
 	
-	@Test
+
 	public List<ProdutoModel> getProdutos(){
 		return produtos;
 	}
-	
-	@Test
 	public void setProdutos(List<ProdutoModel> produtos) {
 		this.produtos = produtos;
 	}
 	
-	@Test
+
 	public ProdutoModel getProdutoModel(){
 		return produtoModel;
 	}
 	
-	@Test
+
 	public void setProdutoModel(ProdutoModel produtoModel) {
 		this.produtoModel = produtoModel;
 	}
@@ -55,7 +51,7 @@ public class ProdutoController implements Serializable{
 	 * CARREGA OS PRODUTOS NA INICIALIZACAO 
 	 */
 	@PostConstruct
-	@Test
+
 	public void init(){
 		
 		//Retorna os produtos cadastrados
@@ -66,7 +62,7 @@ public class ProdutoController implements Serializable{
 	 * CARREGA INFORMACOES DE UM PRODUTO PARA SER EDITADO
 	 * @param  produtoModel
 	 */
-	@Test
+
 	public void editar(ProdutoModel produtoModel){
 		
 		this.produtoModel = produtoModel;
@@ -75,7 +71,7 @@ public class ProdutoController implements Serializable{
 	/***
 	 * ATUALIZA O REGISTRO QUE FOI ALTERADO
 	 */
-	@Test
+
 	public void alterarRegistro(){
 		
 		this.produtoRepository.alterarRegistro(this.produtoModel);
@@ -88,7 +84,7 @@ public class ProdutoController implements Serializable{
 	 * EXCLUINDO UM REGISTRO
 	 * @param produtoModel
 	 */
-	@Test
+
 	public void excluirProduto(ProdutoModel produtoModel){
 		
 		//exclui o produto do banco de dados
@@ -100,7 +96,7 @@ public class ProdutoController implements Serializable{
 	/**
 	 * SALVA UM NOVO REGISTRO VIA INPUT
 	 */
-	@Test
+
 	public void salvarNovoProduto() {
 
 		produtoRepository.salvarNovoProduto(this.produtoModel);
