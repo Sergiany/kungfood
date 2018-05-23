@@ -55,12 +55,12 @@ public class UsuarioController implements Serializable {
  
 		if(StringUtils.isEmpty(usuarioModel.getUsuario()) || StringUtils.isBlank(usuarioModel.getUsuario())){
  
-			Uteis.Mensagem("Favor informar o login!");
+			Uteis.mensagem("Favor informar o login!");
 			return null;
 		}
 		else if(StringUtils.isEmpty(usuarioModel.getSenha()) || StringUtils.isBlank(usuarioModel.getSenha())){
  
-			Uteis.Mensagem("Favor informar a senha!");
+			Uteis.mensagem("Favor informar a senha!");
 			return null;
 		}
 		else{	
@@ -82,11 +82,21 @@ public class UsuarioController implements Serializable {
 			}
 			else{
  
-				Uteis.Mensagem("Não foi possível efetuar o login com esse usuario e senha!");
+				Uteis.mensagem("Não foi possível efetuar o login com esse usuario e senha!");
 				return null;
 			}
 		}
  
+ 
+	}
+	public void salvarNovoUsuario(){
+		 
+		
+		//INFORMANDO QUE O CADASTRO FOI VIA INPUT
+ 
+		usuarioRepository.salvarNovoRegistro(this.usuarioModel);
+ 
+		this.usuarioModel = null;
  
 	}
  

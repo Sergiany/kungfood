@@ -102,6 +102,6 @@ public class CardapioController implements Serializable{
 		
 		this.cardapioModel = null;
 		
-		Uteis.MensagemInfo("Prato cadastrado com sucesso");
+		Uteis.mensagemInfo("Prato cadastrado com sucesso");
 	}
 }

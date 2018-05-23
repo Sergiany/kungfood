@@ -28,6 +28,7 @@ public class PessoaController implements Serializable {
  
 	@Produces 
 	private List<PessoaModel> pessoas;
+
  
 	@Inject transient
 	private PessoaRepository pessoaRepository;
@@ -45,7 +46,6 @@ public class PessoaController implements Serializable {
 	public void setPessoaModel(PessoaModel pessoaModel) {
 		this.pessoaModel = pessoaModel;
 	}
- 
 	/***
 	 * CARREGA AS PESSOAS NA INICIALIZACAO 
 	 */
@@ -112,7 +112,7 @@ public class PessoaController implements Serializable {
  
 		this.pessoaModel = null;
  
-		Uteis.MensagemInfo("Registro cadastrado com sucesso");
+		Uteis.mensagemInfo("Registro cadastrado com sucesso");
  
 	}
 }

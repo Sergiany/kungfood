@@ -55,7 +55,7 @@ public class ProdutoController implements Serializable{
 	public void init(){
 		
 		//Retorna os produtos cadastrados
-		this.produtos = produtoRepository.getProduto();
+		this.produtos = produtoRepository.getProdutos();
 	}
 	
 	/***
@@ -103,7 +103,7 @@ public class ProdutoController implements Serializable{
 
 		this.produtoModel = null;
 
-		Uteis.MensagemInfo("Produto cadastrado com sucesso");
+		Uteis.mensagemInfo("Produto cadastrado com sucesso");
 
 	}
 }
