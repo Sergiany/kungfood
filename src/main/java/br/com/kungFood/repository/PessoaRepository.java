@@ -30,7 +30,7 @@ public class PessoaRepository {
 	 */
 	public void salvarNovoRegistro(PessoaModel pessoaModel){
  
-		entityManager =  Uteis.JpaEntityManager();
+		entityManager =  Uteis.jpaEntityManager();
  
 		pessoaEntity = new PessoaEntity();
 		pessoaEntity.setDataCadastro(LocalDateTime.now());
@@ -57,7 +57,7 @@ public class PessoaRepository {
  
 		List<PessoaModel> pessoasModel = new ArrayList<PessoaModel>();
  
-		entityManager =  Uteis.JpaEntityManager();
+		entityManager =  Uteis.jpaEntityManager();
  
 		Query query = entityManager.createNamedQuery("PessoaEntity.findAll");
  
@@ -107,7 +107,7 @@ public class PessoaRepository {
 	
 	private PessoaEntity getPessoa(int codigo){
  
-		entityManager =  Uteis.JpaEntityManager();
+		entityManager =  Uteis.jpaEntityManager();
  
 		return entityManager.find(PessoaEntity.class, codigo);
 	}
@@ -119,7 +119,7 @@ public class PessoaRepository {
 	
 	public void alterarRegistro(PessoaModel pessoaModel){
  
-		entityManager =  Uteis.JpaEntityManager();
+		entityManager =  Uteis.jpaEntityManager();
  
 		PessoaEntity pessoaEntity = this.getPessoa(pessoaModel.getCodigo());
  
@@ -138,7 +138,7 @@ public class PessoaRepository {
 	
 	public void excluirRegistro(int codigo){
  
-		entityManager =  Uteis.JpaEntityManager();		
+		entityManager =  Uteis.jpaEntityManager();		
  
 		PessoaEntity pessoaEntity = this.getPessoa(codigo);
  

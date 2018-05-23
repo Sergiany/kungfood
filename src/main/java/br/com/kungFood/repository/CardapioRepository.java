@@ -23,7 +23,7 @@ public class CardapioRepository {
 	
 	public void salvarNovoProduto(CardapioModel cardapioModel){
 		
-		entityManager = Uteis.JpaEntityManager();
+		entityManager = Uteis.jpaEntityManager();
 		
 		cardapioEntity = new CardapioEntity();
 		cardapioEntity.setId_prato(cardapioModel.getId_prato());
@@ -39,7 +39,7 @@ public class CardapioRepository {
 		
 		List<CardapioModel> cardapiosModel = new ArrayList<CardapioModel>();
 		
-		entityManager = Uteis.JpaEntityManager();
+		entityManager = Uteis.jpaEntityManager();
 		
 		Query query = entityManager.createNamedQuery("CardapioEntity.findAll");
 		
@@ -71,7 +71,7 @@ public class CardapioRepository {
 	
 	private CardapioEntity getCardapio(int codigo){
 		
-		entityManager = Uteis.JpaEntityManager();
+		entityManager = Uteis.jpaEntityManager();
 		
 		return entityManager.find(CardapioEntity.class, codigo);
 	}
@@ -82,7 +82,7 @@ public class CardapioRepository {
 	 */
 	
 	public void alterarRegistro(CardapioModel cardapioModel){
-		entityManager = Uteis.JpaEntityManager();
+		entityManager = Uteis.jpaEntityManager();
 		
 		CardapioEntity cardapioEntity = this.getCardapio(cardapioModel.getId_prato());
 		
@@ -100,7 +100,7 @@ public class CardapioRepository {
 	 */
 	
 	public void excluirRegistro(int codigo){
-		entityManager = Uteis.JpaEntityManager();
+		entityManager = Uteis.jpaEntityManager();
 		
 		CardapioEntity cardapioEntity = this.getCardapio(codigo);
 		

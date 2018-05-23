@@ -5,6 +5,10 @@
 	version="2.0">
 	
 	<persistence-unit name="unit_app" transaction-type="RESOURCE_LOCAL">
+	
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+	
+		<class>br.com.kungFood.entity.ProdutoEntity</class>
 		
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />

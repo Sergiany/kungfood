@@ -1,7 +1,11 @@
 package br.com.kungFood.repository;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import br.com.kungFood.model.UsuarioModel;
@@ -13,6 +17,9 @@ public class UsuarioRepository implements Serializable {
  
  
 	private static final long serialVersionUID = 1L;
+	
+	UsuarioEntity usuarioEntity;
+	EntityManager entityManager;
  
 	
 	public UsuarioEntity validaUsuario(UsuarioModel usuarioModel){
@@ -20,7 +27,7 @@ public class UsuarioRepository implements Serializable {
 		try {
  
 			//QUERY QUE VAI SER EXECUTADA (UsuarioEntity.findUser) 	
-			Query query = Uteis.JpaEntityManager().createNamedQuery("UsuarioEntity.findUser");
+			Query query = Uteis.jpaEntityManager().createNamedQuery("UsuarioEntity.findUser");
  
 			//PARÂMETROS DA QUERY
 			query.setParameter("usuario", usuarioModel.getUsuario());
@@ -33,8 +40,42 @@ public class UsuarioRepository implements Serializable {
  
 			return null;
 		}
+	}
+	
+	public void salvarNovoRegistro(UsuarioModel usuarioModel){
+		 
+		entityManager =  Uteis.jpaEntityManager();
  
+		usuarioEntity = new UsuarioEntity();
+		usuarioEntity.setUsuario(usuarioModel.getUsuario());
+		usuarioEntity.setSenha(usuarioModel.getSenha());
  
+		entityManager.persist(usuarioEntity);
  
+	}
+	public List<UsuarioModel> getUsuarios(){
+		List<UsuarioModel> usuariosModel = new ArrayList<UsuarioModel>();
+		 
+		entityManager =  Uteis.jpaEntityManager();
+ 
+		Query query = entityManager.createNamedQuery("UsuarioEntity.findAll");
+ 
+		@SuppressWarnings("unchecked")
+		Collection<UsuarioEntity> usuariosEntity = (Collection<UsuarioEntity>)query.getResultList();
+ 
+		UsuarioModel usuarioModel = null;
+ 
+		for (UsuarioEntity usuarioEntity : usuariosEntity) {
+ 
+			usuarioModel = new UsuarioModel();
+			usuarioModel.setCodigo(usuarioEntity.getCodigo());
+			usuarioModel.setUsuario(usuarioEntity.getUsuario());
+			usuarioModel.setSenha(usuarioEntity.getSenha());
+
+			 
+			usuariosModel.add(usuarioModel);
+		}
+ 
+		return usuariosModel;
 	}
 }
