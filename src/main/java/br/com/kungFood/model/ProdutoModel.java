@@ -76,8 +76,8 @@ public class ProdutoModel implements Serializable {
 
 	
 	public void setValidade_produto(String validade_produto) {
-		String data = new ConvertDateToString().convertDateInsert(validade_produto);
-		this.validade_produto = data;
+		//String data = new ConvertDateToString().convertDateInsert(validade_produto);
+		this.validade_produto = validade_produto;
 	}
 	
 }
