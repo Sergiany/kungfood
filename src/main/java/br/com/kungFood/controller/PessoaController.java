@@ -73,9 +73,9 @@ public class PessoaController implements Serializable {
 	 * ATUALIZA O REGISTRO QUE FOI ALTERADO
 	 */
 
-	public void alterarRegistro(){
+	public void alterar(){
  
-		this.pessoaRepository.alterarRegistro(this.pessoaModel);	
+		this.pessoaRepository.alterar(this.pessoaModel);	
  
  
 		/*RECARREGA OS REGISTROS*/
@@ -87,10 +87,10 @@ public class PessoaController implements Serializable {
 	 * @param pessoaModel
 	 */
 
-	public void excluirPessoa(PessoaModel pessoaModel){
+	public void excluir(PessoaModel pessoaModel){
  
 		//EXCLUI A PESSOA DO BANCO DE DADOS
-		this.pessoaRepository.excluirRegistro(pessoaModel.getCodigo());
+		this.pessoaRepository.excluir(pessoaModel.getCodigo());
  
 		//REMOVENDO A PESSOA DA LISTA
 		//ASSIM QUE A PESSOA EH REMOVIDA DA LISTA O DATATABLE ATUALIZADO
@@ -101,14 +101,14 @@ public class PessoaController implements Serializable {
 	 *SALVA UM NOVO REGISTRO VIA INPUT 
 	 */
 
-	public void salvarNovaPessoa(){
+	public void salvar(){
  
 		pessoaModel.setUsuarioModel(this.usuarioController.getUsuarioSession());
  
 		//INFORMANDO QUE O CADASTRO FOI VIA INPUT
 		pessoaModel.setOrigemCadastro("I");
  
-		pessoaRepository.salvarNovoRegistro(this.pessoaModel);
+		pessoaRepository.salvar(this.pessoaModel);
  
 		this.pessoaModel = null;
  

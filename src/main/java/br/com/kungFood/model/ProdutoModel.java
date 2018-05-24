@@ -2,7 +2,6 @@ package br.com.kungFood.model;
 
 import java.io.Serializable;
 
-import br.com.kungFood.uteis.ConvertDateToString;
 
 public class ProdutoModel implements Serializable {
 

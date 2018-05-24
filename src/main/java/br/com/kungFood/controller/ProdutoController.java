@@ -55,7 +55,7 @@ public class ProdutoController implements Serializable{
 	public void init(){
 		
 		//Retorna os produtos cadastrados
-		this.produtos = produtoRepository.getProdutos();
+		this.produtos = produtoRepository.findAll();
 	}
 	
 	/***
@@ -72,9 +72,9 @@ public class ProdutoController implements Serializable{
 	 * ATUALIZA O REGISTRO QUE FOI ALTERADO
 	 */
 
-	public void alterarRegistro(){
+	public void alterar(){
 		
-		this.produtoRepository.alterarRegistro(this.produtoModel);
+		this.produtoRepository.alterar(this.produtoModel);
 		
 		//recarrega registros
 		this.init();
@@ -85,10 +85,10 @@ public class ProdutoController implements Serializable{
 	 * @param produtoModel
 	 */
 
-	public void excluirProduto(ProdutoModel produtoModel){
+	public void excluir(ProdutoModel produtoModel){
 		
 		//exclui o produto do banco de dados
-		this.produtoRepository.excluirRegistro(produtoModel.getId_produto());
+		this.produtoRepository.excluir(produtoModel.getId_produto());
 		
 		this.produtos.remove(produtoModel);
 	}
@@ -96,10 +96,10 @@ public class ProdutoController implements Serializable{
 	/**
 	 * SALVA UM NOVO REGISTRO VIA INPUT
 	 */
+	
+	public void salvar() {
 
-	public void salvarNovoProduto() {
-
-		produtoRepository.salvarNovoProduto(this.produtoModel);
+		produtoRepository.salvar(this.produtoModel);
 
 		this.produtoModel = null;
 

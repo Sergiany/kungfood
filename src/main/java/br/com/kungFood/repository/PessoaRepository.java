@@ -28,9 +28,11 @@ public class PessoaRepository {
 	 * METODO RESPONSAVEL POR SALVAR UMA NOVA PESSOA
 	 * @param pessoaModel
 	 */
-	public void salvarNovoRegistro(PessoaModel pessoaModel){
+	public void salvar(PessoaModel pessoaModel){
  
-		entityManager =  Uteis.jpaEntityManager();
+		entityManager = Uteis.EMF.createEntityManager();
+		entityManager.getTransaction().begin();
+		//entityManager =  Uteis.jpaEntityManager();
  
 		pessoaEntity = new PessoaEntity();
 		pessoaEntity.setDataCadastro(LocalDateTime.now());
@@ -45,6 +47,10 @@ public class PessoaRepository {
 		pessoaEntity.setUsuarioEntity(usuarioEntity);
  
 		entityManager.persist(pessoaEntity);
+		entityManager.flush();
+		pessoaModel.setCodigo(pessoaEntity.getCodigo());
+		entityManager.getTransaction().commit();
+		
  
 	}
  
@@ -57,7 +63,8 @@ public class PessoaRepository {
  
 		List<PessoaModel> pessoasModel = new ArrayList<PessoaModel>();
  
-		entityManager =  Uteis.jpaEntityManager();
+		entityManager = Uteis.EMF.createEntityManager();
+		// entityManager =  Uteis.jpaEntityManager();
  
 		Query query = entityManager.createNamedQuery("PessoaEntity.findAll");
  
@@ -107,7 +114,8 @@ public class PessoaRepository {
 	
 	private PessoaEntity getPessoa(int codigo){
  
-		entityManager =  Uteis.jpaEntityManager();
+		entityManager = Uteis.EMF.createEntityManager();
+		// entityManager =  Uteis.jpaEntityManager();
  
 		return entityManager.find(PessoaEntity.class, codigo);
 	}
@@ -117,9 +125,10 @@ public class PessoaRepository {
 	 * @param pessoaModel
 	 */
 	
-	public void alterarRegistro(PessoaModel pessoaModel){
+	public void alterar(PessoaModel pessoaModel){
  
-		entityManager =  Uteis.jpaEntityManager();
+		entityManager = Uteis.EMF.createEntityManager();
+		// entityManager =  Uteis.jpaEntityManager();
  
 		PessoaEntity pessoaEntity = this.getPessoa(pessoaModel.getCodigo());
  
@@ -136,9 +145,10 @@ public class PessoaRepository {
 	 * @param codigo
 	 */
 	
-	public void excluirRegistro(int codigo){
+	public void excluir(int codigo){
  
-		entityManager =  Uteis.jpaEntityManager();		
+		entityManager = Uteis.EMF.createEntityManager();
+		// entityManager =  Uteis.jpaEntityManager();		
  
 		PessoaEntity pessoaEntity = this.getPessoa(codigo);
  
