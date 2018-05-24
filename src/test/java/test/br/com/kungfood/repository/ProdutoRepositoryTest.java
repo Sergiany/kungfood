@@ -35,12 +35,12 @@ public class ProdutoRepositoryTest {
 
 	@After
 	public void tearDown() throws Exception {
-		dao.excluir(produtoModel.getId_produto());
+		//dao.excluir(produtoModel.getId_produto());
 		dao = null;
 	}
 
 	@Test
-	public void testSalvarNovoProduto() {
+	public void testSalvar() {
 
 		dao.salvar(produtoModel);
 		
@@ -61,40 +61,49 @@ public class ProdutoRepositoryTest {
 		assertEquals("t03", "nome", pm.getNm_produto());
 		assertEquals("t04", new Double(55), new Double(pm.getQt_produto()));
 		assertEquals("t05", "25/10/2015", pm.getValidade_produto());
-		assertEquals("t06", new Double(25.5), new Double(pm.getVl_produto()));	
+		assertEquals("t06", new Double(25.5), new Double(pm.getVl_produto()));
+		dao.excluir(produtoModel.getId_produto());
 	}
 
-	//@Test
+	@Test
 	public void testGetProduto() {
+		dao.salvar(produtoModel);
+		
 		List<ProdutoModel> produtos = dao.getProdutos();
 
 		assertNotNull("T02", produtos);
 
 		int tamanho = produtos.size();
+		System.out.println("Tamanho: " + tamanho);
 
 		// Inserir um Produto
 
 		produtos = dao.getProdutos();
 
-		assertEquals("t02", tamanho, produtos.size());
+		assertEquals("t02", tamanho, produtos.size());	
+		dao.excluir(produtoModel.getId_produto());
 
 	}
 
 	//@Test
-	public void testAlterarRegistro() {
-		dao.alterarRegistro(produtoModel);
+	public void testAlterar() {
+		dao.salvar(produtoModel);
+		
+		dao.alterar(produtoModel);
 		
 		List<ProdutoModel> produtos = dao.getProdutos();
-		
+		ProdutoModel pm = produtos.get(0);
 		assertNotSame("t03", produtos.size(), produtoModel.getId_produto());
-		
-		
-		
+		assertEquals("t02", "pratos", pm.getDs_produto());
 		
 	}
 
-	// @Test
-	public void testExcluirRegistro() {
+	@Test
+	public void testExcluir() {
+		dao.salvar(produtoModel);
+		
+		dao.excluir(produtoModel.getId_produto());
+		dao = null;
 		
 	}
 

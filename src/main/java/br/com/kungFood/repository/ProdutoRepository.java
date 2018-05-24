@@ -160,7 +160,7 @@ public class ProdutoRepository {
 		produtoEntity.setValidade(produtoModel.getValidade_produto());
 		
 		entityManager.merge(produtoEntity);
-		//entityManager.persist(produtoEntity);
+		// entityManager.persist(produtoEntity);
 		entityManager.flush();
 		produtoModel.setId_produto(produtoEntity.getId());
 		entityManager.getTransaction().commit();
