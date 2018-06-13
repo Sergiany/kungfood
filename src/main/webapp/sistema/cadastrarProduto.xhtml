@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+
+<ui:composition template="/template/layoutBase.xhtml">
+
+
+	<ui:define name="content">
+
+		<p:tabView style="width:600px;height:370px;margin:auto;">
+			<p:tab title="Cadastro de Produtos">
+
+				<h:form id="form-cadastro">
+
+					<h:panelGrid id="panelGrid-campos-form" columns="2"
+						cellpadding="10">
+
+						<p:outputLabel value="Nome" for="inputText-nome" />
+						<p:inputText id="inputText-nome" style="width:300px"
+							maxlength="70"
+							value="#{ProdutoController.produtoModel.nm_produto}"
+							required="true"
+							requiredMessage="O nome do produto é de preenchimento obrigatório" />
+
+
+						<p:outputLabel value="Descrição" for="inputText-descricao" />
+						<p:inputText id="inputText-descricao" style="width:300px"
+							maxlength="80"
+							value="#{ProdutoController.produtoModel.ds_produto}"
+							required="true"
+							requiredMessage="A descrição do produto é de preenchimento obrigatório" />
+
+
+						<p:outputLabel value="Valor" for="inputText-valor" />
+						<p:inputText id="inputText-valor" style="width:150px"
+							maxlength="15"
+							value="#{ProdutoController.produtoModel.vl_produto}"
+							required="true"
+							size="20" 
+							requiredMessage="O valor do produto é de preenchimento obrigatório">
+							<!-- <f:convertNumber minFractionDigits="2" maxFractionDigits="3" locale="pt BR"/> -->
+							<f:convertNumber pattern="#,##0.00"></f:convertNumber>
+						</p:inputText>
+
+						<p:outputLabel value="Quantidade" for="inputText-quantidade" />
+						<p:inputText id="inputText-quantidade" style="width:150px"
+							maxlength="15"
+							value="#{ProdutoController.produtoModel.qt_produto}"
+							required="true"
+							size="20"
+							requiredMessage="A quantidade do produto é de preenchimento obrigatório">
+							<!-- <f:convertNumber minFractionDigits="2" maxFractionDigits="3" locale="pt BR"/> -->
+						</p:inputText>
+
+						<p:outputLabel value="Validade" for="popup" />
+						<p:calendar id="popup" style="width:200px" maxlength="150"
+							value="#{ProdutoController.produtoModel.validade_produto}"
+							mask="99-99-9999" 
+							required="true"
+							locale="pt"							
+							requiredMessage="A validade produto é de preenchimento obrigatório">							
+						</p:calendar>
+
+						<p:spacer />
+
+						<p:commandButton value="Salvar" id="commandButton-salvar"
+							icon="ui-icon-gear"
+							actionListener="#{ProdutoController.salvar}"
+							update="panelGrid-campos-form" />
+
+
+					</h:panelGrid>
+
+					<p:messages showDetail="true" autoUpdate="true" closable="true"
+						severity="warn" />
+					<p:messages autoUpdate="true" closable="true" severity="error" />
+					<p:messages showDetail="true" autoUpdate="true" closable="true"
+						severity="info" />
+
+				</h:form>
+
+			</p:tab>
+
+		</p:tabView>
+
+
+
+
+
+	</ui:define>
+
+</ui:composition>
+
+
+</html>
