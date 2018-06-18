@@ -1,6 +1,7 @@
 package br.com.kungFood.controller;
 
 import java.io.Serializable;
+import java.text.ParseException;
 import java.util.List;
  
 import javax.annotation.PostConstruct;
@@ -72,7 +73,7 @@ public class ProdutoController implements Serializable{
 	 * ATUALIZA O REGISTRO QUE FOI ALTERADO
 	 */
 
-	public void alterar(){
+	public void alterar() throws ParseException {
 		
 		this.produtoRepository.alterar(this.produtoModel);
 		

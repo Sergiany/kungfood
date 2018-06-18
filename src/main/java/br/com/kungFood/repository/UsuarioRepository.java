@@ -27,7 +27,7 @@ public class UsuarioRepository implements Serializable {
 		try {
  
 			//QUERY QUE VAI SER EXECUTADA (UsuarioEntity.findUser) 	
-			Query query = Uteis.jpaEntityManager().createNamedQuery("UsuarioEntity.findUser");
+			Query query = Uteis.getConexao().createNamedQuery("UsuarioEntity.findUser");
  
 			//PARÂMETROS DA QUERY
 			query.setParameter("usuario", usuarioModel.getUsuario());
@@ -44,7 +44,7 @@ public class UsuarioRepository implements Serializable {
 	
 	public void salvarNovoRegistro(UsuarioModel usuarioModel){
 		 
-		entityManager =  Uteis.jpaEntityManager();
+		entityManager =  Uteis.getConexao();
  
 		usuarioEntity = new UsuarioEntity();
 		usuarioEntity.setUsuario(usuarioModel.getUsuario());
@@ -56,7 +56,7 @@ public class UsuarioRepository implements Serializable {
 	public List<UsuarioModel> getUsuarios(){
 		List<UsuarioModel> usuariosModel = new ArrayList<UsuarioModel>();
 		 
-		entityManager =  Uteis.jpaEntityManager();
+		entityManager =  Uteis.getConexao();
  
 		Query query = entityManager.createNamedQuery("UsuarioEntity.findAll");
  

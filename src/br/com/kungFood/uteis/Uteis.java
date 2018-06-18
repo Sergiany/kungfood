@@ -4,20 +4,26 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.servlet.http.HttpServletRequest;
  
 public class Uteis {
- 
-	public static EntityManager JpaEntityManager(){
- 
-		FacesContext facesContext = FacesContext.getCurrentInstance();
- 
-		ExternalContext externalContext = facesContext.getExternalContext();
- 
-		HttpServletRequest request  = (HttpServletRequest)externalContext.getRequest();
- 
-		return (EntityManager)request.getAttribute("entityManager");
+	
+	private static EntityManagerFactory EMF;
+	private static EntityManager conexao;
+
+	public static EntityManager getConexao() {
+		conexao = JpaEntityManager().createEntityManager();
+		return conexao;
 	}
+
+	public static synchronized EntityManagerFactory JpaEntityManager(){
+		if (EMF == null){
+			EMF = Persistence.createEntityManagerFactory("unit_app");
+		}
+		return EMF;
+	}
+	
  
 	//MOSTRAR MENSAGEM
 	public static void Mensagem(String mensagem){

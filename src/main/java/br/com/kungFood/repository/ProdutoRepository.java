@@ -1,5 +1,6 @@
 package br.com.kungFood.repository;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -19,26 +20,9 @@ public class ProdutoRepository {
 	
 	EntityManager entityManager;
 	
-	
-//	public void salvarNovoProduto(ProdutoModel produtoModel){
-//		
-//		entityManager = Uteis.jpaEntityManager();
-//		
-//		produtoEntity = new ProdutoEntity();
-//		//O bd cria o Id automaticamente
-//		//produtoEntity.setId(produtoModel.getId_produto());
-//		produtoEntity.setNome(produtoModel.getNm_produto());
-//		produtoEntity.setDescricao(produtoModel.getDs_produto());
-//		produtoEntity.setValor(produtoModel.getVl_produto());
-//		produtoEntity.setQuantidade(produtoModel.getQt_produto());
-//		produtoEntity.setValidade(produtoModel.getValidade_produto());
-//		
-//		entityManager.persist(produtoEntity);
-//	}
-//	
 	public void salvar(ProdutoModel produtoModel){
 		
-		entityManager = Uteis.EMF.createEntityManager();
+		entityManager = Uteis.getConexao();
 		entityManager.getTransaction().begin();
 		
 		produtoEntity = new ProdutoEntity();
@@ -56,11 +40,14 @@ public class ProdutoRepository {
 		entityManager.getTransaction().commit();
 	}
 	
+	public ProdutoEntity findPessoa(Integer id) {
+		return entityManager.find(ProdutoEntity.class, id);
+	}
 	public List<ProdutoModel> findAll(){
 		
 		List<ProdutoModel> produtosModel = new ArrayList<ProdutoModel>();
 		
-		entityManager = Uteis.EMF.createEntityManager();
+		entityManager = Uteis.getConexao();
 		
 		Query query = entityManager.createNamedQuery("ProdutoEntity.findAll");
 		
@@ -86,7 +73,7 @@ public class ProdutoRepository {
 	}
 	
 	public void excluir(int codigo){
-		entityManager = Uteis.EMF.createEntityManager();
+		entityManager = Uteis.getConexao();
 		// entityManager = Uteis.jpaEntityManager();
 		
 		ProdutoEntity produtoEntity = entityManager.find(ProdutoEntity.class, codigo);
@@ -100,7 +87,7 @@ public class ProdutoRepository {
 		
 		List<ProdutoModel> produtosModel = new ArrayList<ProdutoModel>();
 		
-		entityManager = Uteis.EMF.createEntityManager();
+		entityManager = Uteis.getConexao();
 		// entityManager = Uteis.jpaEntityManager();
 		
 		Query query = entityManager.createNamedQuery("ProdutoEntity.findAll");
@@ -135,7 +122,7 @@ public class ProdutoRepository {
 	
 	private ProdutoEntity getProduto(int codigo){
 		
-		entityManager = Uteis.EMF.createEntityManager();
+		entityManager = Uteis.getConexao();
 		// entityManager = Uteis.jpaEntityManager();
 		
 		return entityManager.find(ProdutoEntity.class, codigo);
@@ -146,25 +133,40 @@ public class ProdutoRepository {
 	 * @param produtoModel
 	 */
 	
-	public void alterar(ProdutoModel produtoModel){
-		//entityManager = Uteis.jpaEntityManager();
-		entityManager = Uteis.EMF.createEntityManager();
-		entityManager.getTransaction().begin();
+	public void alterar(ProdutoModel produtoModel) throws ParseException {
+		try {
+			 
+			entityManager = Uteis.getConexao();
+			entityManager.getTransaction().begin();
 		
-		ProdutoEntity produtoEntity = this.getProduto(produtoModel.getId_produto());
-		
-		produtoEntity.setNome(produtoModel.getNm_produto());
-		produtoEntity.setDescricao(produtoModel.getDs_produto());
-		produtoEntity.setValor(produtoModel.getVl_produto());
-		produtoEntity.setQuantidade(produtoModel.getQt_produto());
-		produtoEntity.setValidade(produtoModel.getValidade_produto());
-		
-		entityManager.merge(produtoEntity);
+			
+			ProdutoEntity produtoEntity = this.getProduto(produtoModel.getId_produto());
+			
+			produtoEntity.setNome(produtoModel.getNm_produto());
+			produtoEntity.setDescricao(produtoModel.getDs_produto());
+			produtoEntity.setValor(produtoModel.getVl_produto());
+			produtoEntity.setQuantidade(produtoModel.getQt_produto());
+			produtoEntity.setValidade(produtoModel.getValidade_produto());
+			
+			entityManager.merge(produtoEntity);
 		// entityManager.persist(produtoEntity);
-		entityManager.flush();
-		produtoModel.setId_produto(produtoEntity.getId());
-		entityManager.getTransaction().commit();
-		
+			entityManager.flush();
+			produtoModel.setId_produto(produtoEntity.getId());
+			entityManager.getTransaction().commit();
+		} catch (Exception ex) {
+			String msg = ex.getLocalizedMessage();
+			if(msg == null || msg.length() == 0) {
+				Integer id = produtoEntity.getId();
+				if (findPessoa(id) == null) {
+					System.out.println("Pessoa não encontrada");
+				}
+			}
+			throw ex;
+		} finally {
+			if (entityManager != null) {
+				entityManager.close();
+			}
+		}
 		
 	}
 	

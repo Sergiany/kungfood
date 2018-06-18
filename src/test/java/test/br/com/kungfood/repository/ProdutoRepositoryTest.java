@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNotSame;
 
+import java.text.ParseException;
 import java.util.List;
 
 import org.junit.After;
@@ -86,7 +87,7 @@ public class ProdutoRepositoryTest {
 	}
 
 	//@Test
-	public void testAlterar() {
+	public void testAlterar()  throws ParseException {
 		dao.salvar(produtoModel);
 		
 		dao.alterar(produtoModel);
