@@ -7,6 +7,7 @@ import java.util.List;
  
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityNotFoundException;
 import javax.persistence.Query;
 
 
@@ -129,12 +130,33 @@ public class CardapioRepository {
 	 * @param codigo
 	 */
 	
-	public void excluirRegistro(int codigo){
+	/*public void excluirRegistro(int codigo){
 		entityManager = Uteis.getConexao();
 		//entityManager = Uteis.jpaEntityManager();
 		
 		CardapioEntity cardapioEntity = this.getCardapio(codigo);
 		
 		entityManager.remove(cardapioEntity);
+	}*/
+	
+	public void excluir(int codigo) {
+		try {
+			entityManager = Uteis.getConexao();
+			entityManager.getTransaction().begin();
+			CardapioEntity cardapio = new CardapioEntity();
+			try {
+				cardapio = entityManager.getReference(CardapioEntity.class, codigo);
+				cardapio.getId_prato();
+			} catch (EntityNotFoundException enfe) {
+				// throw new NonexistentEntityException("The avaliacao with id " + id + " no
+				// longer exists.", enfe);
+			}
+			entityManager.remove(cardapio);
+			entityManager.getTransaction().commit();
+		} finally {
+			if (entityManager != null) {
+				entityManager.close();
+			}
+		}
 	}
 }

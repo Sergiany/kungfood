@@ -7,7 +7,6 @@ import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
 
 import br.com.kungFood.model.PessoaModel;
 import br.com.kungFood.model.UsuarioModel;

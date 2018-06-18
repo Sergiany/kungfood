@@ -91,7 +91,7 @@ public class CardapioController implements Serializable{
 	public void excluirCardapio(CardapioModel cardapioModel){
 		
 		//exclui o prato do banco de dados
-		this.cardapioRepository.excluirRegistro(cardapioModel.getId_prato());
+		this.cardapioRepository.excluir(cardapioModel.getId_prato());
 		
 		this.cardapios.remove(cardapioModel);
 	}

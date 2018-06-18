@@ -9,9 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import br.com.kungFood.model.CardapioModel;
-import br.com.kungFood.model.ProdutoModel;
 import br.com.kungFood.repository.CardapioRepository;
-import br.com.kungFood.repository.ProdutoRepository;
 
 public class CardapioRepositoryTest {
 
@@ -28,7 +26,7 @@ public class CardapioRepositoryTest {
 
 	@After
 	public void tearDown() throws Exception {
-		dao.excluirRegistro(cardapioModel.getId_prato());
+		dao.excluir(cardapioModel.getId_prato());
 		dao = null;
 	}
 
@@ -47,10 +45,10 @@ public class CardapioRepositoryTest {
 
 		assertEquals("t01", 1, cardapios.size());
 		
-		CardapioModel pm = cardapios.get(0);
+		// CardapioModel pm = cardapios.get(0);
 		
 		
-		dao.excluirRegistro(cardapioModel.getId_prato());
+		dao.excluir(cardapioModel.getId_prato());
 	}
 	
 	//@Test

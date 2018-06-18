@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityNotFoundException;
 import javax.persistence.Query;
 
 import br.com.kungFood.entity.ProdutoEntity;
@@ -182,4 +183,25 @@ public class ProdutoRepository {
 //		
 //		entityManager.remove(produtoEntity);
 //	}
+	
+	public void excluirRegistro(int codigo) {
+		try {
+			entityManager = Uteis.getConexao();
+			entityManager.getTransaction().begin();
+			ProdutoEntity produto = new ProdutoEntity();
+			try {
+				produto = entityManager.getReference(ProdutoEntity.class, codigo);
+				produto.getId();
+			} catch (EntityNotFoundException enfe) {
+				// throw new NonexistentEntityException("The avaliacao with id " + id + " no
+				// longer exists.", enfe);
+			}
+			entityManager.remove(produto);
+			entityManager.getTransaction().commit();
+		} finally {
+			if (entityManager != null) {
+				entityManager.close();
+			}
+		}
+	}
 }
