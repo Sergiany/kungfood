@@ -50,8 +50,8 @@ public class UsuarioEntity implements Serializable {
 		return senha;
 	}
 	
-	public void setSenha(String senhas) {
-		this.senha = senhas;
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 }
  
