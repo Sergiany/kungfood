@@ -10,7 +10,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
  
-@Table(name="tb_admin")
+@Table(name="tb_funcionario")
 @Entity	
 @NamedQuery(name = "UsuarioEntity.findUser", 
 		    query= "SELECT u FROM UsuarioEntity u WHERE u.usuario = :usuario AND u.senha = :senha")
@@ -20,13 +20,13 @@ public class UsuarioEntity implements Serializable {
  
 	@Id
 	@GeneratedValue
-	@Column(name="id_admin")
+	@Column(name="id_funcionario")
 	private String codigo;
  
-	@Column(name="ds_login_admin")
+	@Column(name="ds_login_funcionario")
 	private String usuario;
  
-	@Column(name="ds_senha_admin")
+	@Column(name="ds_senha_funcionario")
 	private String senha;
  
 	
