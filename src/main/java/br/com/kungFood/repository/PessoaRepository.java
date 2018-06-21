@@ -147,6 +147,7 @@ public class PessoaRepository {
 	 
 			entityManager = Uteis.getConexao();
 			entityManager.getTransaction().begin();
+			//teste
 			
 			entityManager.merge(pessoaEntity);
 			entityManager.getTransaction().commit();
