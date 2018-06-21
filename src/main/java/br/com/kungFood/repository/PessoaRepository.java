@@ -88,9 +88,6 @@ public class PessoaRepository {
 			pessoaModel.setNome(pessoaEntity.getNome());
 
 			if (pessoaEntity.getOrigemCadastro().equals("X"))
-				pessoaModel.setOrigemCadastro("XML");
-			else
-				pessoaModel.setOrigemCadastro("INPUT");
 
 			if (pessoaEntity.getSexo().equals("M"))
 				pessoaModel.setSexo("Masculino");
@@ -153,7 +150,7 @@ public class PessoaRepository {
 			if(msg == null || msg.length() == 0) {
 				Integer id = pessoaModel.getCodigo();
 				if (findPessoa(id) == null) {
-					System.out.println("Pessoa n„o encontrada");
+					System.out.println("Pessoa n√£o encontrada");
 				}
 			}
 			throw ex;
