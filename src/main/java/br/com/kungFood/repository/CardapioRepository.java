@@ -26,7 +26,6 @@ public class CardapioRepository {
 	public void salvarNovoProduto(CardapioModel cardapioModel){
 		
 		entityManager = Uteis.getConexao();
-		//entityManager = Uteis.jpaEntityManager();
 		entityManager.getTransaction().begin();
 		
 		cardapioEntity = new CardapioEntity();
@@ -50,7 +49,6 @@ public class CardapioRepository {
 		
 		List<CardapioModel> cardapiosModel = new ArrayList<CardapioModel>();
 		entityManager = Uteis.getConexao();
-		//entityManager = Uteis.jpaEntityManager();
 		
 		Query query = entityManager.createNamedQuery("CardapioEntity.findAll");
 		
@@ -82,7 +80,6 @@ public class CardapioRepository {
 	
 	private CardapioEntity getCardapio(int codigo){
 		
-		//entityManager = Uteis.jpaEntityManager();
 		entityManager = Uteis.getConexao();
 		
 		return entityManager.find(CardapioEntity.class, codigo);
@@ -113,7 +110,7 @@ public class CardapioRepository {
 			if(msg == null || msg.length() == 0) {
 				Integer id = cardapioModel.getId_prato();
 				if (findCardapio(id) == null) {
-					System.out.println("Cardapio não encontrada");
+					System.out.println("Cardapio nï¿½o encontrada");
 				}
 			}
 			throw ex;
@@ -130,15 +127,6 @@ public class CardapioRepository {
 	 * @param codigo
 	 */
 	
-	/*public void excluirRegistro(int codigo){
-		entityManager = Uteis.getConexao();
-		//entityManager = Uteis.jpaEntityManager();
-		
-		CardapioEntity cardapioEntity = this.getCardapio(codigo);
-		
-		entityManager.remove(cardapioEntity);
-	}*/
-	
 	public void excluir(int codigo) {
 		try {
 			entityManager = Uteis.getConexao();
@@ -148,8 +136,7 @@ public class CardapioRepository {
 				cardapio = entityManager.getReference(CardapioEntity.class, codigo);
 				cardapio.getId_prato();
 			} catch (EntityNotFoundException enfe) {
-				// throw new NonexistentEntityException("The avaliacao with id " + id + " no
-				// longer exists.", enfe);
+				
 			}
 			entityManager.remove(cardapio);
 			entityManager.getTransaction().commit();
