@@ -87,10 +87,10 @@ public class PessoaRepository {
 			pessoaModel.setEndereco(pessoaEntity.getEndereco());
 			pessoaModel.setNome(pessoaEntity.getNome());
 
-			if (pessoaEntity.getOrigemCadastro().equals("X"))
-				pessoaModel.setOrigemCadastro("XML");
-			else
-				pessoaModel.setOrigemCadastro("INPUT");
+			//if (pessoaEntity.getOrigemCadastro().equals("X"))
+				//pessoaModel.setOrigemCadastro("XML");
+			//else
+				//pessoaModel.setOrigemCadastro("INPUT");
 
 			if (pessoaEntity.getSexo().equals("M"))
 				pessoaModel.setSexo("Masculino");
@@ -135,9 +135,8 @@ public class PessoaRepository {
 		
 		try {
 		
-			entityManager = Uteis.getConexao();
-			entityManager.getTransaction().begin();
-			// entityManager =  Uteis.jpaEntityManager();
+			
+			//entityManager =  Uteis.jpaEntityManager();
 	 
 			PessoaEntity pessoaEntity = this.getPessoa(pessoaModel.getCodigo());
 	 
@@ -146,6 +145,9 @@ public class PessoaRepository {
 			pessoaEntity.setNome(pessoaModel.getNome());
 			pessoaEntity.setSexo(pessoaModel.getSexo());
 	 
+			entityManager = Uteis.getConexao();
+			entityManager.getTransaction().begin();
+			
 			entityManager.merge(pessoaEntity);
 			entityManager.getTransaction().commit();
 		} catch (Exception ex) {
@@ -153,7 +155,7 @@ public class PessoaRepository {
 			if(msg == null || msg.length() == 0) {
 				Integer id = pessoaModel.getCodigo();
 				if (findPessoa(id) == null) {
-					System.out.println("Pessoa não encontrada");
+					System.out.println("Pessoa nï¿½o encontrada");
 				}
 			}
 			throw ex;
