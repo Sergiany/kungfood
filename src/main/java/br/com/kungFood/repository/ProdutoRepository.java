@@ -135,11 +135,7 @@ public class ProdutoRepository {
 	 */
 	
 	public void alterar(ProdutoModel produtoModel) throws ParseException {
-		try {
-			 
-			entityManager = Uteis.getConexao();
-			entityManager.getTransaction().begin();
-		
+		try {		
 			
 			ProdutoEntity produtoEntity = this.getProduto(produtoModel.getId_produto());
 			
@@ -149,21 +145,27 @@ public class ProdutoRepository {
 			produtoEntity.setQuantidade(produtoModel.getQt_produto());
 			produtoEntity.setValidade(produtoModel.getValidade_produto());
 			
+			entityManager = Uteis.getConexao();
+			entityManager.getTransaction().begin();
 			entityManager.merge(produtoEntity);
-		// entityManager.persist(produtoEntity);
+			//entityManager.persist(produtoEntity);
 			entityManager.flush();
 			produtoModel.setId_produto(produtoEntity.getId());
 			entityManager.getTransaction().commit();
+			
 		} catch (Exception ex) {
+			
 			String msg = ex.getLocalizedMessage();
 			if(msg == null || msg.length() == 0) {
 				Integer id = produtoEntity.getId();
 				if (findPessoa(id) == null) {
-					System.out.println("Pessoa n„o encontrada");
+					System.out.println("Produto n√£o encontrada");
 				}
 			}
+			
 			throw ex;
-		} finally {
+			
+		} finally {			
 			if (entityManager != null) {
 				entityManager.close();
 			}

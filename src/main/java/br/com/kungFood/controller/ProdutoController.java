@@ -65,7 +65,6 @@ public class ProdutoController implements Serializable{
 	 */
 
 	public void editar(ProdutoModel produtoModel){
-		
 		this.produtoModel = produtoModel;
 	}
 	
@@ -99,7 +98,7 @@ public class ProdutoController implements Serializable{
 	 */
 	
 	public void salvar() {
-
+		
 		produtoRepository.salvar(this.produtoModel);
 
 		this.produtoModel = null;

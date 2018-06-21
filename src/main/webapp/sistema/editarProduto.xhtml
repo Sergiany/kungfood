@@ -47,19 +47,20 @@
 				<!-- <f:convertNumber minFractionDigits="2" maxFractionDigits="3" locale="pt BR"/> -->
 			</p:inputText>
 
-			<p:outputLabel value="Validade" for="popup" />
-			<p:calendar id="popup" style="width:200px" maxlength="150"
+			<p:outputLabel value="Validade" for="validade" />
+			<p:inputMask id="validade" style="width:200px" maxlength="150"
 				value="#{ProdutoController.produtoModel.validade_produto}"
 				mask="99/99/9999" required="true" locale="pt"
 				requiredMessage="A validade produto é de preenchimento obrigatório">
-			</p:calendar>
+			</p:inputMask>
+			
 			<p:spacer />
+			
 			<p:commandButton value="Alterar" id="commandButton-alterar"
 				icon="ui-icon-gear"
 				actionListener="#{ProdutoController.alterar}"
 				oncomplete="PF('dialog-modal-editar').hide();"
 				update="form-consulta" />
-
 
 			<p:spacer />
 			

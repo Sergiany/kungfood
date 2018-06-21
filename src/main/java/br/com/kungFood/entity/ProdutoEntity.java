@@ -9,9 +9,11 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+import br.com.kungFood.uteis.ConvertDateToString;
+
 
 @Entity
-@Table(name ="tb_produto")
+@Table(name ="tb_prod_estoque")
 
 @NamedQueries({
 		@NamedQuery(name = "ProdutoEntity.findAll", query= "SELECT p FROM ProdutoEntity p")
@@ -20,22 +22,22 @@ public class ProdutoEntity {
 	
 	@Id
 	@GeneratedValue
-	@Column(name = "id_produto")
+	@Column(name = "id_prod_estoque")
 	private Integer id;
 	
-	@Column(name = "nm_produto")
+	@Column(name = "nm_prod_estoque")
 	private String nome;
 	
-	@Column(name = "ds_produto")
+	@Column(name = "ds_prod_estoque")
 	private String descricao;
 	
-	@Column(name = "vl_produto")
+	@Column(name = "vl_prod_estoque")
 	private double valor;
 	
-	@Column(name = "qt_produto")
+	@Column(name = "qt_prod_estoque")
 	private double quantidade;
 
-	@Column(name = "validade_produto")
+	@Column(name = "validade_prod_estoque")
 	private String validade;
 
 	
@@ -89,12 +91,12 @@ public class ProdutoEntity {
 
 	
 	public String getValidade() {
-		return validade;
+		return new ConvertDateToString().convertDateSelect(validade);
 	}
 
 	
 	public void setValidade(String validade_produto) {
-		this.validade = validade_produto;
+		this.validade = new ConvertDateToString().convertDateInsert(validade_produto);
 	}
 
 	
