@@ -69,7 +69,6 @@ public class PessoaRepository {
 		List<PessoaModel> pessoasModel = new ArrayList<PessoaModel>();
 
 		entityManager = Uteis.getConexao();
-		// entityManager = Uteis.jpaEntityManager(); 
 
 		Query query = entityManager.createNamedQuery("PessoaEntity.findAll");
 
@@ -119,7 +118,6 @@ public class PessoaRepository {
 	private PessoaEntity getPessoa(int codigo) {
 
 		entityManager = Uteis.getConexao();
-		// entityManager = Uteis.jpaEntityManager();
 
 		return entityManager.find(PessoaEntity.class, codigo);
 	}
@@ -134,8 +132,7 @@ public class PessoaRepository {
 		try {
 		
 			
-			//entityManager =  Uteis.jpaEntityManager();
-	 
+
 			PessoaEntity pessoaEntity = this.getPessoa(pessoaModel.getCodigo());
 	 
 			pessoaEntity.setEmail(pessoaModel.getEmail());
@@ -171,19 +168,6 @@ public class PessoaRepository {
 	 * @param codigo
 	 */
 
-	/*public void excluir(int codigo) {
-
-		entityManager = Uteis.getConexao();
-		entityManager.getTransaction().begin();
-		// entityManager = Uteis.jpaEntityManager();
-
-		PessoaEntity pessoaEntity = this.getPessoa(codigo);
-
-		entityManager.remove(pessoaEntity);
-		// entityManager.merge(pessoaEntity);
-		// entityManager.getTransaction().commit();
-	}*/
-	
 	public void excluir(int codigo) {
 		try {
 			entityManager = Uteis.getConexao();
@@ -193,8 +177,7 @@ public class PessoaRepository {
 				pessoa = entityManager.getReference(PessoaEntity.class, codigo);
 				pessoa.getCodigo();
 			} catch (EntityNotFoundException enfe) {
-				// throw new NonexistentEntityException("The avaliacao with id " + id + " no
-				// longer exists.", enfe);
+				
 			}
 			entityManager.remove(pessoa);
 			entityManager.getTransaction().commit();
