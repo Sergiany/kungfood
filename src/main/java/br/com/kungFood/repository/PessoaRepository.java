@@ -69,7 +69,7 @@ public class PessoaRepository {
 		List<PessoaModel> pessoasModel = new ArrayList<PessoaModel>();
 
 		entityManager = Uteis.getConexao();
-		// entityManager = Uteis.jpaEntityManager();
+		// entityManager = Uteis.jpaEntityManager(); 
 
 		Query query = entityManager.createNamedQuery("PessoaEntity.findAll");
 
@@ -87,10 +87,8 @@ public class PessoaRepository {
 			pessoaModel.setEndereco(pessoaEntity.getEndereco());
 			pessoaModel.setNome(pessoaEntity.getNome());
 
-			//if (pessoaEntity.getOrigemCadastro().equals("X"))
-				//pessoaModel.setOrigemCadastro("XML");
-			//else
-				//pessoaModel.setOrigemCadastro("INPUT");
+
+			if (pessoaEntity.getOrigemCadastro().equals("X"))
 
 			if (pessoaEntity.getSexo().equals("M"))
 				pessoaModel.setSexo("Masculino");
@@ -154,7 +152,8 @@ public class PessoaRepository {
 			if(msg == null || msg.length() == 0) {
 				Integer id = pessoaModel.getCodigo();
 				if (findPessoa(id) == null) {
-					System.out.println("Pessoa n�o encontrada");
+
+					System.out.println("Pessoa não encontrada");
 				}
 			}
 			throw ex;
