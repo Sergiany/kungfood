@@ -146,9 +146,7 @@ public class PessoaRepository {
 			pessoaEntity.setSexo(pessoaModel.getSexo());
 	 
 			entityManager = Uteis.getConexao();
-			entityManager.getTransaction().begin();
-			//teste
-			
+			entityManager.getTransaction().begin();			
 			entityManager.merge(pessoaEntity);
 			entityManager.getTransaction().commit();
 		} catch (Exception ex) {
