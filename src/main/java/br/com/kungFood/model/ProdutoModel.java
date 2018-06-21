@@ -2,7 +2,6 @@ package br.com.kungFood.model;
 
 import java.io.Serializable;
 
-
 public class ProdutoModel implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -75,7 +74,6 @@ public class ProdutoModel implements Serializable {
 
 	
 	public void setValidade_produto(String validade_produto) {
-		//String data = new ConvertDateToString().convertDateInsert(validade_produto);
 		this.validade_produto = validade_produto;
 	}
 	

@@ -9,6 +9,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+import br.com.kungFood.uteis.ConvertDateToString;
+
 
 @Entity
 @Table(name ="tb_prod_estoque")
@@ -89,12 +91,12 @@ public class ProdutoEntity {
 
 	
 	public String getValidade() {
-		return validade;
+		return new ConvertDateToString().convertDateSelect(validade);
 	}
 
 	
 	public void setValidade(String validade_produto) {
-		this.validade = validade_produto;
+		this.validade = new ConvertDateToString().convertDateInsert(validade_produto);
 	}
 
 	

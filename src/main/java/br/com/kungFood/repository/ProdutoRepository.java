@@ -159,7 +159,7 @@ public class ProdutoRepository {
 			if(msg == null || msg.length() == 0) {
 				Integer id = produtoEntity.getId();
 				if (findPessoa(id) == null) {
-					System.out.println("Pessoa n„o encontrada");
+					System.out.println("Pessoa n√£o encontrada");
 				}
 			}
 			throw ex;
