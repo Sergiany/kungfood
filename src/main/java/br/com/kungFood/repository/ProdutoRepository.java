@@ -28,7 +28,6 @@ public class ProdutoRepository {
 		
 		produtoEntity = new ProdutoEntity();
 		//O bd cria o Id automaticamente
-		//produtoEntity.setId(produtoModel.getId_produto());
 		produtoEntity.setNome(produtoModel.getNm_produto());
 		produtoEntity.setDescricao(produtoModel.getDs_produto());
 		produtoEntity.setValor(produtoModel.getVl_produto());
@@ -75,7 +74,6 @@ public class ProdutoRepository {
 	
 	public void excluir(int codigo){
 		entityManager = Uteis.getConexao();
-		// entityManager = Uteis.jpaEntityManager();
 		
 		ProdutoEntity produtoEntity = entityManager.find(ProdutoEntity.class, codigo);
 		entityManager.getTransaction().begin();
@@ -89,7 +87,6 @@ public class ProdutoRepository {
 		List<ProdutoModel> produtosModel = new ArrayList<ProdutoModel>();
 		
 		entityManager = Uteis.getConexao();
-		// entityManager = Uteis.jpaEntityManager();
 		
 		Query query = entityManager.createNamedQuery("ProdutoEntity.findAll");
 		
@@ -124,7 +121,6 @@ public class ProdutoRepository {
 	private ProdutoEntity getProduto(int codigo){
 		
 		entityManager = Uteis.getConexao();
-		// entityManager = Uteis.jpaEntityManager();
 		
 		return entityManager.find(ProdutoEntity.class, codigo);
 	}
@@ -148,7 +144,6 @@ public class ProdutoRepository {
 			entityManager = Uteis.getConexao();
 			entityManager.getTransaction().begin();
 			entityManager.merge(produtoEntity);
-			//entityManager.persist(produtoEntity);
 			entityManager.flush();
 			produtoModel.setId_produto(produtoEntity.getId());
 			entityManager.getTransaction().commit();
@@ -161,8 +156,6 @@ public class ProdutoRepository {
 				if (findPessoa(id) == null) {
 
 					System.out.println("Produto não encontrado");
-
-
 				}
 			}
 			
@@ -173,7 +166,6 @@ public class ProdutoRepository {
 				entityManager.close();
 			}
 		}
-		
 	}
 	
 	/***
@@ -181,13 +173,6 @@ public class ProdutoRepository {
 	 * @param codigo
 	 */
 	
-//	public void excluirRegistro(int codigo){
-//		entityManager = Uteis.jpaEntityManager();
-//		
-//		ProdutoEntity produtoEntity = this.getProduto(codigo);
-//		
-//		entityManager.remove(produtoEntity);
-//	}
 	
 	public void excluirRegistro(int codigo) {
 		try {
@@ -198,8 +183,6 @@ public class ProdutoRepository {
 				produto = entityManager.getReference(ProdutoEntity.class, codigo);
 				produto.getId();
 			} catch (EntityNotFoundException enfe) {
-				// throw new NonexistentEntityException("The avaliacao with id " + id + " no
-				// longer exists.", enfe);
 			}
 			entityManager.remove(produto);
 			entityManager.getTransaction().commit();
