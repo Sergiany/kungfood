@@ -159,7 +159,10 @@ public class ProdutoRepository {
 			if(msg == null || msg.length() == 0) {
 				Integer id = produtoEntity.getId();
 				if (findPessoa(id) == null) {
-					System.out.println("Produto não encontrada");
+
+					System.out.println("Produto não encontrado");
+
+
 				}
 			}
 			
