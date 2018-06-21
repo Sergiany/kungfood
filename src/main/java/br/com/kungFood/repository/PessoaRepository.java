@@ -33,7 +33,6 @@ public class PessoaRepository {
 
 		entityManager = Uteis.getConexao();
 		entityManager.getTransaction().begin();
-		// entityManager = Uteis.jpaEntityManager();
 
 		pessoaEntity = new PessoaEntity();
 		pessoaEntity.setDataCadastro(LocalDateTime.now());
