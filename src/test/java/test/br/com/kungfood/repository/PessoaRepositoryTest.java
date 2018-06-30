@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
 
 import br.com.kungFood.model.PessoaModel;
 import br.com.kungFood.model.UsuarioModel;
@@ -45,7 +46,7 @@ public class PessoaRepositoryTest {
 		dao = null;
 	}
 
-	//@Test
+	@Test
 	public void testSalvar() {
 
 		dao.salvar(pessoaModel);
@@ -70,7 +71,7 @@ public class PessoaRepositoryTest {
 		
 	}
 
-	//@Test
+	@Test
 	public void testGetPessoas() {
 		List<PessoaModel> pessoas = dao.getPessoas();
 		

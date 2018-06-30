@@ -30,7 +30,7 @@ public class CardapioRepositoryTest {
 		dao = null;
 	}
 
-	@Test
+	//@Test
 	public void testSalvar() {
 		dao.salvarNovoProduto(cardapioModel);
 		
@@ -84,7 +84,7 @@ public class CardapioRepositoryTest {
 		*/
 	}
 
-	@Test
+	//@Test
 	public void testExcluir() {
 		/*dao.salvar(produtoModel);
 		

@@ -54,16 +54,17 @@ public class ProdutoRepositoryTest {
 
 		//assertTrue("T02", produtos.contains(produtoModel));
 
-		assertEquals("t01", 1, produtos.size());
+		dao.excluir(produtoModel.getId_produto());
+		assertEquals("t01", tamanho, produtos.size());
 		
 		ProdutoModel pm = produtos.get(0);
 		
-		assertEquals("t02", "pratos", pm.getDs_produto());
-		assertEquals("t03", "nome", pm.getNm_produto());
-		assertEquals("t04", new Double(55), new Double(pm.getQt_produto()));
-		assertEquals("t05", "25/10/2015", pm.getValidade_produto());
-		assertEquals("t06", new Double(25.5), new Double(pm.getVl_produto()));
-		dao.excluir(produtoModel.getId_produto());
+		assertEquals("t02", "asdw", pm.getDs_produto());
+		assertEquals("t03", "uerli", pm.getNm_produto());
+		assertEquals("t04", new Double(1.0), new Double(pm.getQt_produto()));
+		assertEquals("t05", "20/06/2018", pm.getValidade_produto());
+		assertEquals("t06", new Double(0.99), new Double(pm.getVl_produto()));
+		// dao.excluir(produtoModel.getId_produto());
 	}
 
 	@Test
@@ -81,12 +82,12 @@ public class ProdutoRepositoryTest {
 
 		produtos = dao.getProdutos();
 
-		assertEquals("t02", tamanho, produtos.size());	
+		assertEquals("T02", tamanho, produtos.size());	
 		dao.excluir(produtoModel.getId_produto());
 
 	}
 
-	//@Test
+	@Test
 	public void testAlterar()  throws ParseException {
 		dao.salvar(produtoModel);
 		
@@ -95,7 +96,7 @@ public class ProdutoRepositoryTest {
 		List<ProdutoModel> produtos = dao.getProdutos();
 		ProdutoModel pm = produtos.get(0);
 		assertNotSame("t03", produtos.size(), produtoModel.getId_produto());
-		assertEquals("t02", "pratos", pm.getDs_produto());
+		assertEquals("T02", "asdw", pm.getDs_produto());
 		
 	}
 
