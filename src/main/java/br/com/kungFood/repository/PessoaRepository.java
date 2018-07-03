@@ -129,8 +129,6 @@ public class PessoaRepository {
 	public void alterar(PessoaModel pessoaModel) throws ParseException {
 		
 		try {
-		
-			
 
 			PessoaEntity pessoaEntity = this.getPessoa(pessoaModel.getCodigo());
 	 
@@ -141,6 +139,7 @@ public class PessoaRepository {
 	 
 			entityManager = Uteis.getConexao();
 			entityManager.getTransaction().begin();			
+			//pessoaModel.setCodigo(pessoaEntity.getCodigo());
 			entityManager.merge(pessoaEntity);
 			entityManager.getTransaction().commit();
 		} catch (Exception ex) {

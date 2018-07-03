@@ -3,21 +3,18 @@ package test.br.com.kungfood.repository;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNotSame;
-
 import java.text.ParseException;
 import java.util.List;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
 import br.com.kungFood.model.ProdutoModel;
 import br.com.kungFood.repository.ProdutoRepository;
+
 
 public class ProdutoRepositoryTest {
 
 	ProdutoRepository dao;
-
 	ProdutoModel produtoModel;
 
 	@Before
