@@ -3,7 +3,6 @@ package test.br.com.kungfood.repository;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNotSame;
-import static org.junit.Assert.assertTrue;
 import java.text.ParseException;
 import java.util.List;
 import org.junit.After;
@@ -41,21 +40,19 @@ public class ComboRepositoryTest {
 		dao.salvarNovoCombo(comboModel);
 		List<ComboModel> combo = dao.getCombo();
 		
-			assertNotNull("T02", combo);
+			assertNotNull("t01", combo);
 		
 		int tamanho = combo.size();
 		System.out.println("Tamanho: " + tamanho);
 		
-			assertTrue("T02", combo.contains(comboModel));
-
-		dao.excluir(comboModel.getId_combo());
-		assertEquals("t01", tamanho, combo.size());
-				
-		ComboModel cm = combo.get(0);
 		
-		assertEquals("t02", "asdw", cm.getDs_combo());
-		assertEquals("t03", "uerli", cm.getNm_combo());
-		assertEquals("t06", new Double(0.99), new Double(cm.getVl_combo()));
+		assertEquals("t02", tamanho, combo.size());
+			
+		ComboModel cm = combo.get(0);
+
+		assertEquals("t03", "dd", cm.getDs_combo());
+		assertEquals("t04", "dd", cm.getNm_combo());
+		assertEquals("t05", new Double(13.00), new Double(cm.getVl_combo()));
 		
 			dao.excluir(comboModel.getId_combo());
 	}
@@ -87,8 +84,8 @@ public class ComboRepositoryTest {
 		
 		List<ComboModel> combo = dao.getCombo();
 		ComboModel cm = combo.get(0);
-		assertNotSame("t03", combo.size(), comboModel.getId_combo());
-//		assertEquals("T02", "asdw", cm.getDs_combo());
+		assertNotSame("t03", combo.size(), cm.getId_combo());
+		dao.excluir(cm.getId_combo());
 		
 	}
 
