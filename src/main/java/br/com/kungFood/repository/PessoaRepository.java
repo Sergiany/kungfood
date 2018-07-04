@@ -33,7 +33,7 @@ public class PessoaRepository {
 		entityManager.getTransaction().begin();
 
 		pessoaEntity = new PessoaEntity();
-		pessoaEntity.setDataCadastro(LocalDateTime.now());
+		//pessoaEntity.setDataCadastro(LocalDateTime.now());
 		pessoaEntity.setEmail(pessoaModel.getEmail());
 		pessoaEntity.setEndereco(pessoaModel.getEndereco());
 		pessoaEntity.setNome(pessoaModel.getNome());
@@ -42,7 +42,7 @@ public class PessoaRepository {
 		entityManager.persist(pessoaEntity);
 		entityManager.flush();
 		pessoaModel.setCodigo(pessoaEntity.getCodigo());
-		pessoaModel.setDataCadastro(pessoaEntity.getDataCadastro());
+		//pessoaModel.setDataCadastro(pessoaEntity.getDataCadastro());
 		entityManager.getTransaction().commit();
 
 	}

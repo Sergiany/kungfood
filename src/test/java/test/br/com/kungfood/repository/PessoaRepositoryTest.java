@@ -97,7 +97,7 @@ public class PessoaRepositoryTest {
 		dao.excluir(pessoaModel.getCodigo());
 	}
 
-	@Test
+	//@Test
 	public void testExcluirRegistro() {
 		dao.salvar(pessoaModel);
 		
