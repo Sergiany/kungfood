@@ -12,10 +12,8 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.Query;
 
 import br.com.kungFood.model.PessoaModel;
-import br.com.kungFood.model.UsuarioModel;
 import br.com.kungFood.uteis.Uteis;
 import br.com.kungFood.entity.PessoaEntity;
-import br.com.kungFood.entity.UsuarioEntity;
 
 public class PessoaRepository {
 
@@ -39,17 +37,12 @@ public class PessoaRepository {
 		pessoaEntity.setEmail(pessoaModel.getEmail());
 		pessoaEntity.setEndereco(pessoaModel.getEndereco());
 		pessoaEntity.setNome(pessoaModel.getNome());
-		pessoaEntity.setOrigemCadastro(pessoaModel.getOrigemCadastro());
 		pessoaEntity.setSexo(pessoaModel.getSexo());
-
-		UsuarioEntity usuarioEntity = entityManager.find(UsuarioEntity.class,
-				pessoaModel.getUsuarioModel().getCodigo());
-
-		pessoaEntity.setUsuarioEntity(usuarioEntity);
 
 		entityManager.persist(pessoaEntity);
 		entityManager.flush();
 		pessoaModel.setCodigo(pessoaEntity.getCodigo());
+		pessoaModel.setDataCadastro(pessoaEntity.getDataCadastro());
 		entityManager.getTransaction().commit();
 
 	}
@@ -86,19 +79,11 @@ public class PessoaRepository {
 			pessoaModel.setNome(pessoaEntity.getNome());
 
 
-			if (pessoaEntity.getOrigemCadastro().equals("X"))
 
 			if (pessoaEntity.getSexo().equals("M"))
 				pessoaModel.setSexo("Masculino");
 			else
 				pessoaModel.setSexo("Feminino");
-
-			UsuarioEntity usuarioEntity = pessoaEntity.getUsuarioEntity();
-
-			UsuarioModel usuarioModel = new UsuarioModel();
-			usuarioModel.setUsuario(usuarioEntity.getUsuario());
-
-			pessoaModel.setUsuarioModel(usuarioModel);
 
 			pessoasModel.add(pessoaModel);
 		}
@@ -148,7 +133,7 @@ public class PessoaRepository {
 				Integer id = pessoaModel.getCodigo();
 				if (findPessoa(id) == null) {
 
-					System.out.println("Pessoa não encontrada");
+					System.out.println("Pessoa nao encontrada");
 				}
 			}
 			throw ex;

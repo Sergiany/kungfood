@@ -97,7 +97,7 @@ public class CardapioController implements Serializable{
 	}
 	
 
-	public void salvarNovoCardapio(){
+	public void salvarNovoCardapio() throws ParseException{
 		
 		cardapioRepository.salvarNovoProduto(this.cardapioModel);
 		

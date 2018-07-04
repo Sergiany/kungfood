@@ -23,13 +23,13 @@ public class CardapioRepository {
 	EntityManager entityManager;
 	
 	
-	public void salvarNovoProduto(CardapioModel cardapioModel){
+	public void salvarNovoProduto(CardapioModel cardapioModel) throws ParseException{
 		
 		entityManager = Uteis.getConexao();
 		entityManager.getTransaction().begin();
 		
 		cardapioEntity = new CardapioEntity();
-		cardapioEntity.setId_prato(cardapioModel.getId_prato());
+		//cardapioEntity.setId_prato(cardapioModel.getId_prato());
 		cardapioEntity.setNm_prato(cardapioModel.getNm_prato());
 		cardapioEntity.setDs_prato(cardapioModel.getDs_prato());
 		cardapioEntity.setVl_prato(cardapioModel.getVl_prato());

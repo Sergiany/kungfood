@@ -23,9 +23,6 @@ public class PessoaController implements Serializable {
  
 	@Inject transient
 	private PessoaModel pessoaModel;
-	
-	@Inject transient
-	private UsuarioController usuarioController;
  
 	@Produces 
 	private List<PessoaModel> pessoas;
@@ -103,11 +100,6 @@ public class PessoaController implements Serializable {
 	 */
 
 	public void salvar(){
- 
-		pessoaModel.setUsuarioModel(this.usuarioController.getUsuarioSession());
- 
-		//INFORMANDO QUE O CADASTRO FOI VIA INPUT
-		pessoaModel.setOrigemCadastro("I");
  
 		pessoaRepository.salvar(this.pessoaModel);
  
