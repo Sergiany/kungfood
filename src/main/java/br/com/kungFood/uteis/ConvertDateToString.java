@@ -4,8 +4,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ConvertDateToString {
+	
+	private final Logger LOGGER = Logger.getLogger(this.getClass().getName());
 
 	public String convertDateInsert(String data) {
 
@@ -18,7 +22,7 @@ public class ConvertDateToString {
 		try {
 			novoFormato = formatoRecebido.parse(data);
 		} catch (ParseException e) {
-			e.printStackTrace();
+			LOGGER.log(Level.WARNING, "erro de converção", e);
 		}
 		
 		dataFormatada = mascaraData.format(novoFormato);
@@ -37,7 +41,7 @@ public class ConvertDateToString {
 		try {
 			novoFormato = formatoRecebido.parse(data);
 		} catch (ParseException e) {
-			e.printStackTrace();
+			LOGGER.log(Level.WARNING, "erro de converção", e);
 		}
 		
 		dataFormatada = mascaraData.format(novoFormato);
